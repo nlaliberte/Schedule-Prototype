@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>schedule_db</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{3d104536-a121-4637-b827-ec8ca8110ba8}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>schedule_db</RootNamespace>
+    <AssemblyName>schedule_db</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- VS10 without SP1 will not have VisualStudioVersion set, so do that here -->
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <!-- Default to the v10.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Stored Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\team.table.sql" />
+    <Build Include="dbo\Tables\conference.table.sql" />
+    <Build Include="dbo\Tables\field.table.sql" />
+    <Build Include="dbo\Tables\permit.table.sql" />
+    <Build Include="dbo\Tables\stg_permit.table.sql" />
+    <Build Include="dbo\Tables\matchup.table.sql" />
+    <Build Include="dbo\Tables\stg_matchup.table.sql" />
+    <Build Include="dbo\Tables\home_field.table.sql" />
+    <Build Include="dbo\Tables\league.table.sql" />
+    <Build Include="dbo\Tables\team_off_day.table.sql" />
+    <Build Include="dbo\Tables\contact.table.sql" />
+    <Build Include="dbo\Tables\stg_schedule.table.sql" />
+    <Build Include="dbo\Stored Procedures\deploy_seed_conference.proc.sql" />
+    <Build Include="dbo\Stored Procedures\deploy_seed_league.proc.sql" />
+    <Build Include="dbo\Stored Procedures\deploy_seed_contact.proc.sql" />
+    <Build Include="dbo\Stored Procedures\deploy_seed_team.proc.sql" />
+    <Build Include="dbo\Stored Procedures\deploy_seed_field.proc.sql" />
+    <Build Include="dbo\Stored Procedures\deploy_seed_permit.proc.sql" />
+    <Build Include="dbo\Stored Procedures\deploy_seed_home_field.proc.sql" />
+    <Build Include="dbo\Stored Procedures\run_assign_home_permits.proc.sql" />
+    <Build Include="dbo\Stored Procedures\run_create_matchups.proc.sql" />
+    <Build Include="dbo\Stored Procedures\run_assign_permits.proc.sql" />
+    <Build Include="dbo\Stored Procedures\run_schedule_stg.proc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_team_getall.proc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_league_getall.proc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_contact_dropdown.proc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_league_get.proc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_league_update.proc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_conference_getallproc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_team_get.proc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_field_getall.proc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_permit_team.proc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_permit_field.proc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_permit_insert.proc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_team_insert.proc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_team_update.proc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_home_field_getall.proc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_field_available_by_team.proc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_home_field_insert.proc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_home_field_delete.proc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_off_day_insert.proc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_off_day_delete.proc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_team_day_off_getall.proc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_team_delete.proc.sql" />
+    <Build Include="dbo\Stored Procedures\pr_permit_delete.proc.sql" />
+  </ItemGroup>
+</Project>
