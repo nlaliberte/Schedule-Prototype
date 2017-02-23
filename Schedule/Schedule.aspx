@@ -32,40 +32,42 @@ function confirmCreate()
         <asp:Label ID="lbl_currentSchedule" runat="server" Text="Current Schedule:" Font-Size="Large"></asp:Label>
         <br />
         <asp:Panel ID="pnl_scheduleChosen" runat="server">
-            <table style="width:2200px">
-                <tr style="width:2200px">
-                    <td style="width:155px"></td>
-                    <td style="width:30px"></td>
-                    <td style="width:80px"></td>
-                    <td colspan="5" style="width:450px; background-color: #CCE6FF;"><center>Games on Subsequent Days in a Row (Total / Max / Avg per)</center></td>
-                    <td colspan="8" style="width:720px; background-color: Wheat;"><center>Games in a Week (Total / Max / Avg)</center></td>
-                    <td colspan="4" style="width:480px; background-color: #A4FFA4;"><center>Games in the Month of: (Total / Avg / Max / Min )</center></td>
-                    <td style="width:190px"></td>
-                </tr>
-                <tr style="width:2200px">
+            <font size="2">
+                <table style="width:2200px">
+                    <tr style="width:2200px">
                         <td style="width:155px"></td>
-                        <td style="width:30px"><center>ID</center></td>
-                        <td style="width:80px"><center>Un- scheduled</center></td>
-                        <td style="width:90px; background-color:#CCE6FF;"><center>2</center></td>
-                        <td style="width:90px"><center>3</center></td>
-                        <td style="width:90px; background-color:#CCE6FF;"><center>4</center></td>
-                        <td style="width:90px"><center>5</center></td>
-                        <td style="width:90px; background-color:#CCE6FF;"><center>6</center></td>
-                        <td style="width:90px; background-color: Wheat;"><center>0</center></td>
-                        <td style="width:90px"><center>1</center></td>
-                        <td style="width:90px; background-color: Wheat;"><center>2</center></td>
-                        <td style="width:90px"><center>3</center></td>
-                        <td style="width:90px; background-color: Wheat;"><center>4</center></td>
-                        <td style="width:90px"><center>5</center></td>
-                        <td style="width:90px; background-color: Wheat;"><center>6</center></td>
-                        <td style="width:90px"><center>7</center></td>
-                        <td style="width:120px; background-color: #A4FFA4;"><center>May</center></td>
-                        <td style="width:120px"><center>June</center></td>
-                        <td style="width:120px; background-color: #A4FFA4;"><center>July</center></td>
-                        <td style="width:120px"><center>August</center></td>
-                        <td style="width:190px">Created Date</td>
-                </tr>
-            </table>
+                        <td style="width:30px"></td>
+                        <td style="width:80px"></td>
+                        <td colspan="5" style="width:450px; background-color: #CCE6FF;"><center>Games on Subsequent Days in a Row (Total / Max / Avg per)</center></td>
+                        <td colspan="8" style="width:720px; background-color: Wheat;"><center>Games in a Week (Total / Max / Avg)</center></td>
+                        <td colspan="4" style="width:480px; background-color: #A4FFA4;"><center>Games in the Month of: (Total / Avg / Max / Min )</center></td>
+                        <td style="width:190px"></td>
+                    </tr>
+                    <tr style="width:2200px">
+                            <td style="width:155px"></td>
+                            <td style="width:30px"><center>ID</center></td>
+                            <td style="width:80px"><center>Unscheduled</center></td>
+                            <td style="width:90px; background-color:#CCE6FF;"><center>2</center></td>
+                            <td style="width:90px"><center>3</center></td>
+                            <td style="width:90px; background-color:#CCE6FF;"><center>4</center></td>
+                            <td style="width:90px"><center>5</center></td>
+                            <td style="width:90px; background-color:#CCE6FF;"><center>6</center></td>
+                            <td style="width:90px; background-color: Wheat;"><center>0</center></td>
+                            <td style="width:90px"><center>1</center></td>
+                            <td style="width:90px; background-color: Wheat;"><center>2</center></td>
+                            <td style="width:90px"><center>3</center></td>
+                            <td style="width:90px; background-color: Wheat;"><center>4</center></td>
+                            <td style="width:90px"><center>5</center></td>
+                            <td style="width:90px; background-color: Wheat;"><center>6</center></td>
+                            <td style="width:90px"><center>7</center></td>
+                            <td style="width:120px; background-color: #A4FFA4;"><center>May</center></td>
+                            <td style="width:120px"><center>June</center></td>
+                            <td style="width:120px; background-color: #A4FFA4;"><center>July</center></td>
+                            <td style="width:120px"><center>August</center></td>
+                            <td style="width:190px">Created Date</td>
+                    </tr>
+                </table>
+            </font>
             <asp:GridView ID="grd_scheduleChosen" runat="server" AutoGenerateColumns="False" ShowHeader="False" DataSourceID="SqlDataSource_stgScheduleChosen" OnRowCommand="grd_scheduleChosen_RowCommand" Width="2200px">
                 <Columns>
                     <asp:ButtonField ButtonType="Button" CommandName="export" Text="Export">
@@ -456,41 +458,43 @@ function confirmCreate()
             </tr>
         </table>
         <asp:Panel ID="pnl_schedulePotential" runat="server">
-            <table style="width:2290px">
-                <tr style="width:2290px">
-                    <td style="width:225px"></td>
-                    <td style="width:40px"></td>
-                    <td style="width:80px"></td>
-                    <td colspan="5" style="width:450px; background-color: #CCE6FF;"><center>Games on Subsequent Days in a Row (Total / Max / Avg )</center></td>
-                    <td colspan="8" style="width:720px; background-color: Wheat;"><center>Games in a Week (Total / Max / Avg )</center></td>
-                    <td colspan="4" style="width:480px; background-color: #A4FFA4;"><center>Games in the Month of: (Total / Avg / Max / Min )</center></td>
-                    <td style="width:195px"></td>
-                </tr>
-                <tr style="width:2290px">
+            <font size="2">
+                <table style="width:2290px">
+                    <tr style="width:2290px">
                         <td style="width:225px"></td>
-                        <td style="width:40px"><center>  ID</center></td>
-                        <td style="width:70px"><center>Un- scheduled</center></td>
-                        <td style="width:90px; background-color: #CCE6FF;"><center>2</center></td>
-                        <td style="width:90px"><center>3</center></td>
-                        <td style="width:90px; background-color: #CCE6FF;"><center>4</center></td>
-                        <td style="width:90px"><center>5</center></td>
-                        <td style="width:90px; background-color: #CCE6FF;"><center>6</center></td>
-                        <td style="width:90px; background-color: Wheat;"><center>0</center></td>
-                        <td style="width:90px"><center>1</center></td>
-                        <td style="width:90px; background-color: Wheat;"><center>2</center></td>
-                        <td style="width:90px"><center>3</center></td>
-                        <td style="width:90px; background-color: Wheat;"><center>4</center></td>
-                        <td style="width:90px"><center>5</center></td>
-                        <td style="width:90px; background-color: Wheat;"><center>6</center></td>
-                        <td style="width:90px"><center>7</center></td>
-                        <td style="width:120px; background-color: #A4FFA4;"><center>May</center></td>
-                        <td style="width:120px"><center>June</center></td>
-                        <td style="width:120px; background-color: #A4FFA4;"><center>July</center></td>
-                        <td style="width:120px"><center>August</center></td>
-                        <td style="width:195px">Created Date</td>
-                </tr>
-            </table>
-            <asp:GridView ID="grd_schedule" runat="server" AutoGenerateColumns="False" ShowHeader="false" DataSourceID="SqlDataSource_stgSchedule" OnRowCommand="grd_schedule_RowCommand" Width="2280px">
+                        <td style="width:40px"></td>
+                        <td style="width:80px"></td>
+                        <td colspan="5" style="width:450px; background-color: #CCE6FF;"><center>Games on Subsequent Days in a Row (Total / Max / Avg )</center></td>
+                        <td colspan="8" style="width:720px; background-color: Wheat;"><center>Games in a Week (Total / Max / Avg )</center></td>
+                        <td colspan="4" style="width:480px; background-color: #A4FFA4;"><center>Games in the Month of: (Total / Avg / Max / Min )</center></td>
+                        <td style="width:195px"></td>
+                    </tr>
+                    <tr style="width:2290px">
+                            <td style="width:225px"></td>
+                            <td style="width:40px"><center>  ID</center></td>
+                            <td style="width:70px"><center>Unscheduled</center></td>
+                            <td style="width:90px; background-color: #CCE6FF;"><center>2</center></td>
+                            <td style="width:90px"><center>3</center></td>
+                            <td style="width:90px; background-color: #CCE6FF;"><center>4</center></td>
+                            <td style="width:90px"><center>5</center></td>
+                            <td style="width:90px; background-color: #CCE6FF;"><center>6</center></td>
+                            <td style="width:90px; background-color: Wheat;"><center>0</center></td>
+                            <td style="width:90px"><center>1</center></td>
+                            <td style="width:90px; background-color: Wheat;"><center>2</center></td>
+                            <td style="width:90px"><center>3</center></td>
+                            <td style="width:90px; background-color: Wheat;"><center>4</center></td>
+                            <td style="width:90px"><center>5</center></td>
+                            <td style="width:90px; background-color: Wheat;"><center>6</center></td>
+                            <td style="width:90px"><center>7</center></td>
+                            <td style="width:120px; background-color: #A4FFA4;"><center>May</center></td>
+                            <td style="width:120px"><center>June</center></td>
+                            <td style="width:120px; background-color: #A4FFA4;"><center>July</center></td>
+                            <td style="width:120px"><center>August</center></td>
+                            <td style="width:195px">Created Date</td>
+                    </tr>
+                </table>
+            </font>
+            <asp:GridView ID="grd_schedule" runat="server" AutoGenerateColumns="False" ShowHeader="False" DataSourceID="SqlDataSource_stgSchedule" OnRowCommand="grd_schedule_RowCommand" Width="2280px" >
                 <Columns>
                     <asp:ButtonField ButtonType="Button" CommandName="preview" Text="Preview" >
                     <ControlStyle Width="80px" />
@@ -504,7 +508,7 @@ function confirmCreate()
                     <HeaderStyle Height="0px" Width="80px" />
                     <ItemStyle Width="80px" />
                     </asp:ButtonField>
-                    <asp:ButtonField ButtonType="Button" CommandName="Delete" Text="Delete" >
+                    <asp:ButtonField ButtonType="Button" CommandName="del" Text="Delete" >
                     <ControlStyle Width="80px" />
                     <FooterStyle Width="80px" />
                     <HeaderStyle Height="0px" Width="80px" />

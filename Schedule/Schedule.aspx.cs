@@ -129,6 +129,27 @@ namespace Schedule
                 Response.Redirect("Schedule.aspx" + "#preview", false);
             }
 
+            if(e.CommandName == "del")
+            {
+                string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
+                using (SqlConnection con = new SqlConnection(CS))
+                {
+                    SqlCommand cmd = new SqlCommand("EXEC dbo.sch_stg_delete " + leagueID + ", " + stgID, con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                    con.Close();
+                }
+
+                string script = "alert(\"Potential Schedule ID: " + stgID + " has been Removed.\");";
+                ScriptManager.RegisterStartupScript(this, GetType(),
+                                  "ServerControlScript", script, true);
+
+                grd_schedule.DataBind();
+
+                nullScheduleWarnings((string)Session["stgID"]);
+            }
+
             
         }
 
@@ -204,6 +225,7 @@ namespace Schedule
                 Response.Redirect("Schedule.aspx" + "#preview", false);
             }
         }
+
 
 
     }
