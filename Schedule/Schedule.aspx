@@ -71,362 +71,362 @@ function confirmCreate()
                 <ControlStyle Width="80px" />
                 <FooterStyle Width="80px" />
                 <HeaderStyle Width="80px" />
-                <ItemStyle Width="80px" />
+                <ItemStyle Width="80px" Font-Size="Smaller" />
                 </asp:ButtonField>
                 <asp:ButtonField ButtonType="Button" CommandName="preview" Text="Preview" >
                 <ControlStyle Width="80px" />
                 <FooterStyle Width="80px" />
                 <HeaderStyle Height="0px" Width="80px" />
-                <ItemStyle Width="80px" />
+                <ItemStyle Width="80px" Font-Size="Smaller" />
                 </asp:ButtonField>
                 <asp:BoundField DataField="stg_id" SortExpression="stg_id" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Width="30px" />
+                <ItemStyle Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="remaining_matchups_to_schedule" ReadOnly="True" SortExpression="remaining_matchups_to_schedule" >
                 <ControlStyle Width="90px" />
                 <FooterStyle Width="90px" />
                 <HeaderStyle Height="0px" Width="90px" />
-                <ItemStyle ForeColor="Red" Width="90px" />
+                <ItemStyle ForeColor="Red" Width="90px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="two_row" ReadOnly="True" SortExpression="two_row" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" BackColor="#CCE6FF"/>
-                <ItemStyle Width="30px" BackColor="#CCE6FF"/>
+                <ItemStyle Width="30px" BackColor="#CCE6FF" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="two_row_max" ReadOnly="True" SortExpression="two_row_max" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" BackColor="#CCE6FF"/>
-                <ItemStyle Font-Italic="True" Width="30px" BackColor="#CCE6FF" />
+                <ItemStyle Font-Italic="True" Width="30px" BackColor="#CCE6FF" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="two_row_avg" ReadOnly="True" SortExpression="two_row_avg" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" BackColor="#CCE6FF"/>
-                <ItemStyle Width="30px" BackColor="#CCE6FF"/>
+                <ItemStyle Width="30px" BackColor="#CCE6FF" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="three_row" ReadOnly="True" SortExpression="three_row" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
-                <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Width="30px" />
+                <HeaderStyle Height="0px" Width="30px"/>
+                <ItemStyle Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="three_row_max" ReadOnly="True" SortExpression="three_row_max" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Font-Italic="True" Width="30px" />
+                <ItemStyle Font-Italic="True" Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="three_row_avg" ReadOnly="True" SortExpression="three_row_avg" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
-                <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Width="30px" />
+                <HeaderStyle Height="0px" Width="30px"/>
+                <ItemStyle Width="30px" Font-Size="Smaller"  />
                 </asp:BoundField>
                 <asp:BoundField DataField="four_row" ReadOnly="True" SortExpression="four_row" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" BackColor="#CCE6FF"/>
-                <ItemStyle Width="30px" BackColor="#CCE6FF"/>
+                <ItemStyle Width="30px" BackColor="#CCE6FF" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="four_row_max" ReadOnly="True" SortExpression="four_row_max" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" BackColor="#CCE6FF"/>
-                <ItemStyle Font-Italic="True" Width="30px" BackColor="#CCE6FF"/>
+                <ItemStyle Font-Italic="True" Width="30px" BackColor="#CCE6FF" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="four_row_avg" ReadOnly="True" SortExpression="four_row_avg" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" BackColor="#CCE6FF"/>
-                <ItemStyle Width="30px" BackColor="#CCE6FF"/>
+                <ItemStyle Width="30px" BackColor="#CCE6FF" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="five_row" ReadOnly="True" SortExpression="five_row" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
-                <HeaderStyle Height="0px" Width="30px" />
+                <HeaderStyle Height="0px" Width="30px" Font-Size="Smaller" />
                 <ItemStyle Width="30px" />
                 </asp:BoundField>
                 <asp:BoundField DataField="five_row_max" ReadOnly="True" SortExpression="five_row_max" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Font-Italic="True" Width="30px" />
+                <ItemStyle Font-Italic="True" Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="five_row_avg" ReadOnly="True" SortExpression="five_row_avg" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Width="30px" />
+                <ItemStyle Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="six_row" ReadOnly="True" SortExpression="six_row" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" BackColor="#CCE6FF"/>
-                <ItemStyle Width="30px" BackColor="#CCE6FF"/>
+                <ItemStyle Width="30px" BackColor="#CCE6FF" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="six_row_max" ReadOnly="True" SortExpression="six_row_max" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" BackColor="#CCE6FF"/>
-                <ItemStyle Font-Italic="True" Width="30px" BackColor="#CCE6FF"/>
+                <ItemStyle Font-Italic="True" Width="30px" BackColor="#CCE6FF" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="six_row_avg" ReadOnly="True" SortExpression="six_row_avg" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" BackColor="#CCE6FF"/>
-                <ItemStyle Width="30px" BackColor="#CCE6FF"/>
+                <ItemStyle Width="30px" BackColor="#CCE6FF" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="no_week" ReadOnly="True" SortExpression="no_week" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px"  BackColor="Wheat"/>
-                <ItemStyle Width="30px"  BackColor="Wheat"/>
+                <ItemStyle Width="30px"  BackColor="Wheat" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="no_week_max" ReadOnly="True" SortExpression="no_week_max" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px"  BackColor="Wheat"/>
-                <ItemStyle Font-Italic="True" Width="30px"  BackColor="Wheat"/>
+                <ItemStyle Font-Italic="True" Width="30px"  BackColor="Wheat" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="no_week_avg" ReadOnly="True" SortExpression="no_week_avg" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px"  BackColor="Wheat"/>
-                <ItemStyle Width="30px"  BackColor="Wheat"/>
+                <ItemStyle Width="30px"  BackColor="Wheat" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="one_week" ReadOnly="True" SortExpression="one_week" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px"/>
-                <ItemStyle Width="30px"/>
+                <ItemStyle Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="one_week_max" ReadOnly="True" SortExpression="one_week_max" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Font-Italic="True" Width="30px" />
+                <ItemStyle Font-Italic="True" Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="one_week_avg" ReadOnly="True" SortExpression="one_week_avg" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Width="30px" />
+                <ItemStyle Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="two_week" ReadOnly="True" SortExpression="two_week" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px"  BackColor="Wheat"/>
-                <ItemStyle Width="30px"  BackColor="Wheat"/>
+                <ItemStyle Width="30px"  BackColor="Wheat" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="two_week_max" ReadOnly="True" SortExpression="two_week_max" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px"  BackColor="Wheat"/>
-                <ItemStyle Font-Italic="True" Width="30px"  BackColor="Wheat"/>
+                <ItemStyle Font-Italic="True" Width="30px"  BackColor="Wheat" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="two_week_avg" ReadOnly="True" SortExpression="two_week_avg" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px"  BackColor="Wheat"/>
-                <ItemStyle Width="30px"  BackColor="Wheat"/>
+                <ItemStyle Width="30px"  BackColor="Wheat" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="three_week" ReadOnly="True" SortExpression="three_week" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Width="30px" />
+                <ItemStyle Width="30px"  Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="three_week_max" ReadOnly="True" SortExpression="three_week_max" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Font-Italic="True" Width="30px" />
+                <ItemStyle Font-Italic="True" Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="three_week_avg" ReadOnly="True" SortExpression="three_week_avg" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Width="30px" />
+                <ItemStyle Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="four_week" ReadOnly="True" SortExpression="four_week" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px"  BackColor="Wheat"/>
-                <ItemStyle Width="30px"  BackColor="Wheat"/>
+                <ItemStyle Width="30px"  BackColor="Wheat" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="four_week_max" ReadOnly="True" SortExpression="four_week_max" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px"  BackColor="Wheat"/>
-                <ItemStyle Font-Italic="True" Width="30px"  BackColor="Wheat"/>
+                <ItemStyle Font-Italic="True" Width="30px"  BackColor="Wheat" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="four_week_avg" ReadOnly="True" SortExpression="four_week_avg" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px"  BackColor="Wheat"/>
-                <ItemStyle Width="30px"  BackColor="Wheat"/>
+                <ItemStyle Width="30px"  BackColor="Wheat" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="five_week" ReadOnly="True" SortExpression="five_week" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Width="30px" />
+                <ItemStyle Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="five_week_max" ReadOnly="True" SortExpression="five_week_max" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Font-Italic="True" Width="30px" />
+                <ItemStyle Font-Italic="True" Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="five_week_avg" ReadOnly="True" SortExpression="five_week_avg" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Width="30px" />
+                <ItemStyle Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="six_week" ReadOnly="True" SortExpression="six_week" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px"  BackColor="Wheat"/>
-                <ItemStyle Width="30px"  BackColor="Wheat"/>
+                <ItemStyle Width="30px"  BackColor="Wheat" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="six_week_max" ReadOnly="True" SortExpression="six_week_max" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px"  BackColor="Wheat"/>
-                <ItemStyle Font-Italic="True" Width="30px"  BackColor="Wheat"/>
+                <ItemStyle Font-Italic="True" Width="30px"  BackColor="Wheat" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="six_week_avg" ReadOnly="True" SortExpression="six_week_avg" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px"  BackColor="Wheat"/>
-                <ItemStyle Width="30px"  BackColor="Wheat"/>
+                <ItemStyle Width="30px"  BackColor="Wheat" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="seven_week" ReadOnly="True" SortExpression="seven_week" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Width="30px" />
+                <ItemStyle Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="seven_week_max" ReadOnly="True" SortExpression="seven_week_max" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Font-Italic="True" Width="30px" />
+                <ItemStyle Font-Italic="True" Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="seven_week_avg" ReadOnly="True" SortExpression="seven_week_avg" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Width="30px" />
+                <ItemStyle Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="may_games" ReadOnly="True" SortExpression="may_games" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" BackColor="#A4FFA4" />
-                <ItemStyle Width="30px" BackColor="#A4FFA4" />
+                <ItemStyle Width="30px" BackColor="#A4FFA4" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="may_games_avg" ReadOnly="True" SortExpression="may_games_avg" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" BackColor="#A4FFA4" />
-                <ItemStyle Width="30px" BackColor="#A4FFA4" />
+                <ItemStyle Width="30px" BackColor="#A4FFA4" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="may_games_max" ReadOnly="True" SortExpression="may_games_max" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" BackColor="#A4FFA4" />
-                <ItemStyle Width="30px" BackColor="#A4FFA4" />
+                <ItemStyle Width="30px" BackColor="#A4FFA4" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="may_games_min" ReadOnly="True" SortExpression="may_games_min" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" BackColor="#A4FFA4" />
-                <ItemStyle Width="30px" BackColor="#A4FFA4" />
+                <ItemStyle Width="30px" BackColor="#A4FFA4" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="june_games" ReadOnly="True" SortExpression="june_games" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Width="30px" />
+                <ItemStyle Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="june_games_avg" ReadOnly="True" SortExpression="june_games_avg" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Width="30px" />
+                <ItemStyle Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="june_games_max" ReadOnly="True" SortExpression="june_games_max" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Width="30px" />
+                <ItemStyle Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="june_games_min" ReadOnly="True" SortExpression="june_games_min" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Width="30px" />
+                <ItemStyle Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="july_games" ReadOnly="True" SortExpression="july_games" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" BackColor="#A4FFA4" />
-                <ItemStyle Width="30px" BackColor="#A4FFA4" />
+                <ItemStyle Width="30px" BackColor="#A4FFA4" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="july_games_avg" ReadOnly="True" SortExpression="july_games_avg" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" BackColor="#A4FFA4" />
-                <ItemStyle Width="30px" BackColor="#A4FFA4" />
+                <ItemStyle Width="30px" BackColor="#A4FFA4" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="july_games_max" ReadOnly="True" SortExpression="july_games_max" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" BackColor="#A4FFA4" />
-                <ItemStyle Width="30px" BackColor="#A4FFA4" />
+                <ItemStyle Width="30px" BackColor="#A4FFA4" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="july_games_min" ReadOnly="True" SortExpression="july_games_min" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" BackColor="#A4FFA4" />
-                <ItemStyle Width="30px" BackColor="#A4FFA4" />
+                <ItemStyle Width="30px" BackColor="#A4FFA4" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="august_games" ReadOnly="True" SortExpression="august_games" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Width="30px" />
+                <ItemStyle Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="august_games_avg" ReadOnly="True" SortExpression="august_games_avg" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Width="30px" />
+                <ItemStyle Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="august_games_max" ReadOnly="True" SortExpression="august_games_max" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Width="30px" />
+                <ItemStyle Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="august_games_min" ReadOnly="True" SortExpression="august_games_min" >
                 <ControlStyle Width="30px" />
                 <FooterStyle Width="30px" />
                 <HeaderStyle Height="0px" Width="30px" />
-                <ItemStyle Width="30px" />
+                <ItemStyle Width="30px" Font-Size="Smaller" />
                 </asp:BoundField>
                 <asp:BoundField DataField="chosen_stg" HeaderText="chosen_stg" ReadOnly="True" SortExpression="chosen_stg" Visible="False" />
                 <asp:BoundField DataField="create_date" HeaderText="create_date" ReadOnly="True" SortExpression="create_date" >
                 <ControlStyle Width="200px" />
                 <FooterStyle Width="200px" />
                 <HeaderStyle Height="0px" Width="200px" />
-                <ItemStyle Width="200px" />
+                <ItemStyle Width="200px" Font-Size="Smaller" />
                 </asp:BoundField>
             </Columns>
             <HeaderStyle Height="0px"/>
@@ -448,9 +448,9 @@ function confirmCreate()
                     <table>
                         <tr>
                             <td>
-                                <asp:Label ID="lbl_createSchedule1" runat="server" Text="Create  " Font-Size="Small"></asp:Label>
+                                <asp:Label ID="lbl_createSchedule1" runat="server" Text="Create  " Font-Size="Smaller"></asp:Label>
                                 <asp:TextBox ID="txt_numSchedule" runat="server" Width="30px"></asp:TextBox>
-                                <asp:Label ID="lbl_createSchedule2" runat="server" Text=" New Potential Schedules" Width="135px" Font-Size="Small"></asp:Label>
+                                <asp:Label ID="lbl_createSchedule2" runat="server" Text=" New Potential Schedules" Width="135px" Font-Size="Smaller"></asp:Label>
                             </td>
                         </tr>
                     </table>

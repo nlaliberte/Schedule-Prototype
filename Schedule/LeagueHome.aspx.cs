@@ -147,7 +147,7 @@ namespace Schedule
             string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(CS))
             {
-                SqlCommand cmd = new SqlCommand("SELECT CONVERT(VARCHAR(3),(SELECT MAX(stg_id) FROM matchup WHERE league_id = " + leagueID + "))", con);
+                SqlCommand cmd = new SqlCommand("SELECT CONVERT(VARCHAR(3),ISNULL((SELECT MAX(stg_id) FROM matchup WHERE league_id = " + leagueID + "),-1))", con);
                 con.Open();
                 Session["stgID"] = cmd.ExecuteScalar();
                 cmd.Dispose();
