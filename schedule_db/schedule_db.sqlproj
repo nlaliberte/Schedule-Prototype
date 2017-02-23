@@ -75,7 +75,6 @@
     <Build Include="dbo\Tables\league.table.sql" />
     <Build Include="dbo\Tables\team_off_day.table.sql" />
     <Build Include="dbo\Tables\contact.table.sql" />
-    <Build Include="dbo\Tables\stg_schedule.table.sql" />
     <Build Include="dbo\Stored Procedures\deploy_seed_conference.proc.sql" />
     <Build Include="dbo\Stored Procedures\deploy_seed_league.proc.sql" />
     <Build Include="dbo\Stored Procedures\deploy_seed_contact.proc.sql" />
@@ -109,5 +108,11 @@
     <Build Include="dbo\Stored Procedures\pr_team_day_off_getall.proc.sql" />
     <Build Include="dbo\Stored Procedures\pr_team_delete.proc.sql" />
     <Build Include="dbo\Stored Procedures\pr_permit_delete.proc.sql" />
+    <Build Include="dbo\Tables\stg_stats.sql" />
+    <Build Include="dbo\Tables\calendar.sql" />
+    <Build Include="dbo\Stored Procedures\sch_stats_getleague.sql" />
+    <Build Include="dbo\Stored Procedures\sch_save_schedule.sql" />
+    <Build Include="dbo\Stored Procedures\run_log_stg_stats.sql" />
+    <Build Include="dbo\Stored Procedures\deploy_seed_calendar.sql" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[stg_stats] (
+    [league_id]       INT      NOT NULL,
+    [stg_id]          INT      NOT NULL,
+    [team_id]         INT      NOT NULL,
+    [two_in_a_row]    INT      NOT NULL,
+    [three_in_a_row]  INT      NOT NULL,
+    [four_in_a_row]   INT      NOT NULL,
+    [five_in_a_row]   INT      NOT NULL,
+    [six_in_a_row]    INT      NOT NULL,
+    [no_game_week]    INT      NOT NULL,
+    [one_game_week]   INT      NOT NULL,
+    [two_game_week]   INT      NOT NULL,
+    [three_game_week] INT      NOT NULL,
+    [four_game_week]  INT      NOT NULL,
+    [five_game_week]  INT      NOT NULL,
+    [six_game_week]   INT      NOT NULL,
+    [seven_game_week] INT      NOT NULL,
+    [may_games]       INT      NOT NULL,
+    [june_games]      INT      NOT NULL,
+    [july_games]      INT      NOT NULL,
+    [august_games]    INT      NOT NULL,
+    [create_date]     DATETIME NOT NULL,
+    CONSTRAINT [pk_stg_stats] PRIMARY KEY CLUSTERED ([league_id] ASC, [stg_id] ASC, [team_id] ASC)
+);
+

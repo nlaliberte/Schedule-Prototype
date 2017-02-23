@@ -1,9 +1,9 @@
-﻿
---Now let's add current Teams with their initial contact info.
-CREATE PROCEDURE [dbo].[deploy_seed_team]
+﻿CREATE PROCEDURE [dbo].[deploy_seed_team]
 AS
 BEGIN
 
+	TRUNCATE TABLE dbo.team
+	
 	INSERT INTO dbo.team
 	VALUES
 		(1, 'AlThomas Athletics', 1, 20, 18)
@@ -19,6 +19,6 @@ BEGIN
 		,(11, 'South Boston Saints', 1, 21, NULL)
 		,(12, 'South End Astros', 1, 10, 11)
 		,(13, 'Stoneham Sabers', 2, 2, 29)
-		
+	
 END
 

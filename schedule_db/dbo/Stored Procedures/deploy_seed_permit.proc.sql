@@ -1,8 +1,8 @@
-﻿
---Let's add some dummy permits (based on last year's schedule)
-CREATE PROCEDURE [dbo].[deploy_seed_permit] @mode INT
+﻿CREATE PROCEDURE [dbo].[deploy_seed_permit] @mode INT
 AS
 BEGIN
+
+	TRUNCATE TABLE dbo.permit
 
 	IF @mode = 0 --Default (based off last year's schedule)
 	BEGIN

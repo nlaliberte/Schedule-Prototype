@@ -35,7 +35,7 @@ function confirmDelete()
         <asp:HyperLink ID="link_home" runat="server" NavigateUrl="~/Default.aspx" Font-Italic="True" Font-Size="Smaller">Back to Home</asp:HyperLink>
         <br />
         <br />
-    </div>
+    
         <table>
             <tr>
                 <td><asp:Label ID="lbl_leagueName" runat="server" Text="(League Name)" Font-Bold="True" Font-Size="Large"></asp:Label></td>
@@ -44,7 +44,7 @@ function confirmDelete()
                 <td style="width:20px"></td>
                 <td><asp:Button ID="btn_managePermits" runat="server" Text="Manage Permits" Font-Size="Smaller" OnClick="btn_managePermits_Click"/></td>
                 <td style="width:20px"></td>
-                <td><asp:Button ID="btn_manageSchedule" runat="server" Text="Manage Schedule" Font-Size="Smaller" /></td>
+                <td><asp:Button ID="btn_manageSchedule" runat="server" Text="Manage Schedule" Font-Size="Smaller" OnClick="btn_manageSchedule_Click" /></td>
             </tr>
         </table>
         <br />
@@ -236,6 +236,8 @@ function confirmDelete()
                 </td>
             </tr>
         </table>
+
+    </div>
     </form>
 </body>
 </html>

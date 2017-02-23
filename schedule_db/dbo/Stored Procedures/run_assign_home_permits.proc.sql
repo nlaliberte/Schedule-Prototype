@@ -21,9 +21,11 @@ BEGIN
 	WHILE @loop_status = 0
 	BEGIN
 		
-		UPDATE stg_permit
-		SET home_team_id = orig_home_team_id
-		WHERE stg_id = @stg_id
+		--UPDATE stg_permit
+		--SET home_team_id = orig_home_team_id
+		--WHERE 
+		--	stg_id = @stg_id
+		--	AND league_id = @league_id
 		
 		WHILE EXISTS 
 		(
@@ -107,7 +109,7 @@ BEGIN
 						AND p.home_team_id = -1
 						AND p.league_id = @league_id
 						--Make sure the team doesn't already have a permit on this day
-						AND NOT EXISTS (SELECT home_team_id FROM stg_permit WHERE stg_id = @stg_id AND home_team_id = @home_team_id AND DATEPART(dd,permit_date) = DATEPART(dd,p.permit_date) AND DATEPART(mm,permit_date) = DATEPART(mm,p.permit_date))
+						AND NOT EXISTS (SELECT home_team_id FROM stg_permit WHERE stg_id = @stg_id AND league_id = @league_id AND home_team_id = @home_team_id AND DATEPART(dd,permit_date) = DATEPART(dd,p.permit_date) AND DATEPART(mm,permit_date) = DATEPART(mm,p.permit_date))
 					GROUP BY
 						p.permit_id
 						,p.permit_date
@@ -128,6 +130,7 @@ BEGIN
 			WHERE 
 				p.stg_id = @stg_id
 				AND p.permit_id = @permit_id
+				AND p.league_id = @league_id
 
 		END
 		--DEBUG
@@ -186,7 +189,7 @@ BEGIN
 					p.stg_id = @stg_id
 					AND p.permit_id = @permit_id
 					--Make sure the team doesn't already have a permit on this day
-					AND NOT EXISTS (SELECT home_team_id FROM stg_permit WHERE stg_id = @stg_id AND home_team_id = h.team_id AND DATEPART(dd,permit_date) = DATEPART(dd,p.permit_date) AND DATEPART(mm,permit_date) = DATEPART(mm,p.permit_date))
+					AND NOT EXISTS (SELECT home_team_id FROM stg_permit WHERE stg_id = @stg_id AND league_id = @league_id AND home_team_id = h.team_id AND DATEPART(dd,permit_date) = DATEPART(dd,p.permit_date) AND DATEPART(mm,permit_date) = DATEPART(mm,p.permit_date))
 				GROUP BY 
 					p.permit_id
 					,h.team_id
@@ -205,6 +208,7 @@ BEGIN
 			WHERE 
 				p.stg_id = @stg_id 
 				AND p.permit_id = @permit_id
+				AND p.league_id = @league_id
 		END
 			
 		IF NOT EXISTS --Teams with multiple home games on the same date

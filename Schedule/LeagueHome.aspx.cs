@@ -140,6 +140,23 @@ namespace Schedule
             Response.Redirect("PermitHomebyField.aspx");
         }
 
+        protected void btn_manageSchedule_Click(object sender, EventArgs e)
+        {
+            string leagueID = (string)Session["leagueID"];
+
+            string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(CS))
+            {
+                SqlCommand cmd = new SqlCommand("SELECT CONVERT(VARCHAR(3),(SELECT MAX(stg_id) FROM matchup WHERE league_id = " + leagueID + "))", con);
+                con.Open();
+                Session["stgID"] = cmd.ExecuteScalar();
+                cmd.Dispose();
+                con.Close();
+            }
+            
+            Response.Redirect("Schedule.aspx");
+        }
+
 
 
 
