@@ -1,5 +1,4 @@
-﻿
--- ===============================================
+﻿-- ===============================================
 -- Author:		Nate Laliberte
 -- Create date:   01/31/2012
 -- Description:	Will clear out existing matchup data and create new matchups based on inputted league format
@@ -15,7 +14,7 @@ BEGIN
 	
 	DECLARE @session_start DATETIME = GETDATE()
 	
-	--If new run than clear out old runds
+	--If new run than clear out old runs
 	IF @new_run = 1
 	BEGIN
 		--Clear out the staging tables from previous runs
@@ -32,6 +31,18 @@ BEGIN
 	--Iterate the Schedule Creation process for the amount of iterations specified
 	DECLARE @stg_id INT = ISNULL((SELECT MAX(stg_id) FROM stg_stats WHERE league_id = @league_id),0) + 1
 	DECLARE @end_stg_id INT = @stg_id + @iterations - 1
+	
+	--Make sure there are no records in the staging tables for the stg_ids
+	DELETE FROM dbo.stg_permit
+	WHERE 
+		league_id = @league_id
+		AND stg_id >= @stg_id
+		
+	DELETE FROM dbo.stg_matchup
+	WHERE
+		league_id = @league_id
+		AND stg_id >= @stg_id
+		
 	
 	WHILE @stg_id <= @end_stg_id
 	BEGIN
