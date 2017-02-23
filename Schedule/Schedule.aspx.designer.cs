@@ -49,6 +49,15 @@ namespace Schedule {
         protected global::System.Web.UI.WebControls.Label lbl_currentSchedule;
         
         /// <summary>
+        /// pnl_scheduleChosen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnl_scheduleChosen;
+        
+        /// <summary>
         /// grd_scheduleChosen control.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,15 @@ namespace Schedule {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_stgScheduleChosen;
+        
+        /// <summary>
+        /// lbl_noChosenSchedule control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_noChosenSchedule;
         
         /// <summary>
         /// lbl_potentialSchedules control.
@@ -112,6 +130,15 @@ namespace Schedule {
         protected global::System.Web.UI.WebControls.Button btn_createSchedule;
         
         /// <summary>
+        /// pnl_schedulePotential control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnl_schedulePotential;
+        
+        /// <summary>
         /// grd_schedule control.
         /// </summary>
         /// <remarks>
@@ -128,6 +155,15 @@ namespace Schedule {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_stgSchedule;
+        
+        /// <summary>
+        /// lbl_noPotentialSchedule control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_noPotentialSchedule;
         
         /// <summary>
         /// lnk_top control.

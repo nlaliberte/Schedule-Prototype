@@ -20,23 +20,75 @@ namespace Schedule
 
                 string leagueID = (string)Session["leagueID"];
                 string stgID = (string)Session["stgID"];
+                string teamID;
 
                 string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
                 using (SqlConnection con = new SqlConnection(CS))
                 {
                     SqlCommand cmd = new SqlCommand("SELECT CONVERT(VARCHAR(3),MIN(t.team_id)) FROM dbo.team t INNER JOIN dbo.conference c ON t.conference_id = c.conference_id AND c.league_id = " + leagueID, con);
                     con.Open();
-                    Session["teamID"] = cmd.ExecuteScalar();
+                    teamID = (string)cmd.ExecuteScalar();
                     cmd.Dispose();
                     con.Close();
                 }
 
+                Session["teamID"] = teamID;
+
                 ddl_team.SelectedValue = (string)Session["teamID"];
 
                 lbl_stgID.Text = "Schedule ID: " + stgID + " (Currently Selected)";
-                
+
+                nullScheduleWarnings(stgID);
             }
         }
+
+        protected void nullScheduleWarnings(string stgID)
+        {
+            string leagueID = (string)Session["leagueID"];
+            int stgCount;
+            int stgChosenCount;
+
+            string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(CS))
+            {
+                SqlCommand cmd = new SqlCommand("SELECT ISNULL(COUNT(DISTINCT stg_id),0) FROM dbo.stg_stats WHERE league_id = " + leagueID, con);
+                con.Open();
+                stgCount = (int)cmd.ExecuteScalar();
+                cmd.Dispose();
+                con.Close();
+
+                cmd.CommandText = "SELECT CASE WHEN MAX(stg_id) IS NULL THEN 0 ELSE 1 END FROM dbo.matchup WHERE league_id = " + leagueID;
+                con.Open();
+                stgChosenCount = (int)cmd.ExecuteScalar();
+                cmd.Dispose();
+                con.Close();
+            }
+
+            if(stgID == "-1")
+            {
+                lbl_noChosenSchedule.Visible = true;
+                pnl_scheduleChosen.Visible = false;
+             
+            }
+            else
+            {
+                lbl_noChosenSchedule.Visible = false;
+                pnl_scheduleChosen.Visible = true;
+            }
+
+            if(stgCount - stgChosenCount <= 0)
+            {
+                lbl_noPotentialSchedule.Visible = true;
+                pnl_schedulePotential.Visible = false;
+            }
+            else
+            {
+                lbl_noPotentialSchedule.Visible = false;
+                pnl_schedulePotential.Visible = true;
+            }
+
+        }
+
 
         protected void grd_schedule_RowCommand(Object sender, GridViewCommandEventArgs e)
         {
@@ -65,6 +117,8 @@ namespace Schedule
 
                 lbl_stgID.Text = "Schedule ID: " + stgID + " (Currently Selected)";
                 grd_scheduleByTeam.DataBind();
+
+                nullScheduleWarnings(stgID);
             }
 
             if(e.CommandName == "preview")
@@ -82,6 +136,7 @@ namespace Schedule
         {
             string leagueID = (string)Session["leagueID"];
             string numSchedule = txt_numSchedule.Text;
+            string stgID = (string)Session["stgID"];
 
             if (
                     numSchedule != "1" 
@@ -123,6 +178,8 @@ namespace Schedule
 
                 grd_schedule.DataBind();
             }
+
+            nullScheduleWarnings(stgID);
         }
 
         protected void ddl_team_SelectedIndexChanged(object sender, EventArgs e)

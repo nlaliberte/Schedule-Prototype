@@ -63,13 +63,11 @@
     <Content Include="FieldEdit.aspx" />
     <Content Include="FieldNew.aspx" />
     <Content Include="LeagueEdit.aspx" />
-    <Content Include="LeagueNew.aspx" />
     <Content Include="PermitEdit.aspx" />
     <Content Include="PermitHomebyField.aspx" />
     <Content Include="PermitHomebyTeam.aspx" />
     <Content Include="PermitNew.aspx" />
     <Content Include="Schedule.aspx" />
-    <Content Include="TeamNew.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
     <Content Include="TeamEdit.aspx" />
@@ -117,13 +115,6 @@
     </Compile>
     <Compile Include="LeagueEdit.aspx.designer.cs">
       <DependentUpon>LeagueEdit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="LeagueNew.aspx.cs">
-      <DependentUpon>LeagueNew.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="LeagueNew.aspx.designer.cs">
-      <DependentUpon>LeagueNew.aspx</DependentUpon>
     </Compile>
     <Compile Include="PermitEdit.aspx.cs">
       <DependentUpon>PermitEdit.aspx</DependentUpon>
@@ -174,13 +165,6 @@
     </Compile>
     <Compile Include="TeamEdit.aspx.designer.cs">
       <DependentUpon>TeamEdit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TeamNew.aspx.cs">
-      <DependentUpon>TeamNew.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TeamNew.aspx.designer.cs">
-      <DependentUpon>TeamNew.aspx</DependentUpon>
     </Compile>
     <Compile Include="LeagueHome.aspx.cs">
       <DependentUpon>LeagueHome.aspx</DependentUpon>
