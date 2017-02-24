@@ -119,5 +119,6 @@
     <Build Include="dbo\Stored Procedures\sch_schedule_getbyteam.sql" />
     <PostDeploy Include="Post Deployment Scripts\Post_Deployment.script.sql" />
     <Build Include="dbo\Stored Procedures\sch_stg_delete.sql" />
+    <Build Include="dbo\Stored Procedures\sch_stg_export_1.sql" />
   </ItemGroup>
 </Project>
