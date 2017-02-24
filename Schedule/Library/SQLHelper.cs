@@ -75,9 +75,19 @@ namespace Schedule.Library
             return result;
         }
 
-        public static void Exec_SQLExcelExport(DataTable dt, System.Web.UI.Page page)
+        public static void Exec_SQLExcelExport(DataTable dt, System.Web.UI.Page page, int exportID)
         {
-            string attach = "attachment;filename=schedule.xls";
+            string attach;
+
+            if (exportID == 1)
+            {
+                attach = "attachment;filename=schedule.xls";
+            }
+            else
+            {
+                attach = "attachment;filename=schedule(" + exportID + ").xls";
+            }
+
             page.Response.ClearContent();
             page.Response.AddHeader("content-disposition", attach);
             page.Response.ContentType = "application/ms-excel";
@@ -101,6 +111,8 @@ namespace Schedule.Library
             }
 
             page.Response.End();
+
+            return;
         }
 
         public static DataTable Exec_SQLReaderDataTable(string query)
