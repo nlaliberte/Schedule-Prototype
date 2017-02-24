@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using Schedule.Library;
 
 namespace Schedule
 {
@@ -27,22 +28,14 @@ namespace Schedule
                 }
                 else
                 {
-                    string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
-                    using (SqlConnection con = new SqlConnection(CS))
+                    string query = "EXEC dbo.pr_team_get " + teamID;
+                    DataTable teamResults = SQLHelper.Exec_SQLReaderDataTable(query);
+                    foreach (DataRow row in teamResults.Rows)
                     {
-                        SqlCommand cmd = new SqlCommand("EXEC dbo.pr_team_get " + teamID, con);
-                        con.Open();
-                        SqlDataReader teamSource = cmd.ExecuteReader();
-                        while (teamSource.Read())
-                        {
-                            txt_leagueName.Text = (string)teamSource.GetValue(1).ToString();
-                            dd_conference.SelectedValue = (string)teamSource.GetValue(2).ToString();
-                            dd_primaryContact.SelectedValue = (string)teamSource.GetValue(4).ToString();
-                            dd_secondaryContact.SelectedValue = (string)teamSource.GetValue(6).ToString();
-                        }
-                        teamSource.Close();
-                        cmd.Dispose();
-                        con.Close();
+                        txt_leagueName.Text = row["team_name"].ToString();
+                        dd_conference.SelectedValue = row["conference_id"].ToString();
+                        dd_primaryContact.SelectedValue = row["contact_id"].ToString();
+                        dd_secondaryContact.SelectedValue = row["contact_id2"].ToString();
                     }
                 }
 
@@ -74,45 +67,28 @@ namespace Schedule
             string conferenceID = dd_conference.SelectedValue;
             string primaryContactID = dd_primaryContact.SelectedValue;
             string secondaryContactID = dd_secondaryContact.SelectedValue;
+            string query;
+            bool result;
 
             if (teamID == "-1")
             {
                 //insert new team
-                string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
-                using (SqlConnection con = new SqlConnection(CS))
-                {
-                    SqlCommand cmd = new SqlCommand("EXEC dbo.pr_team_insert '" + teamName + "', " + conferenceID + ", " + primaryContactID + ", " + secondaryContactID, con);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    cmd.Dispose();
-                    con.Close();
+                query = "EXEC dbo.pr_team_insert '" + teamName + "', " + conferenceID + ", " + primaryContactID + ", " + secondaryContactID;
+                result = SQLHelper.Exec_SQLNonQuery(query);
 
-                    cmd.CommandText = "SELECT CONVERT(VARCHAR(3),MAX(team_id) + 1) FROM dbo.team WHERE team_name = '" + teamName + "'";
-                    con.Open();
-                    teamID = (string)cmd.ExecuteScalar();
-                    cmd.Dispose();
-                    con.Close();
-                }
+                query = "SELECT CONVERT(VARCHAR(3),MAX(team_id) + 1) FROM dbo.team WHERE team_name = '" + teamName + "'";
+                teamID = SQLHelper.Exec_SQLScalarString(query);
 
-                string script = "alert(\"Team Added!\");";
-                ScriptManager.RegisterStartupScript(this, GetType(),
-                                      "ServerControlScript", script, true);
+                string script = "alert(\"" + teamName + " has been Added!\");";
+                ScriptManager.RegisterStartupScript(this, GetType(),"ServerControlScript", script, true);
             }
             else
             {
-                string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
-                using (SqlConnection con = new SqlConnection(CS))
-                {
-                    SqlCommand cmd = new SqlCommand("EXEC dbo.pr_team_update " + teamID + ", '" + teamName + "', " + conferenceID + ", " + primaryContactID + ", " + secondaryContactID, con);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    cmd.Dispose();
-                    con.Close();
-                }
+                query = "EXEC dbo.pr_team_update " + teamID + ", '" + teamName + "', " + conferenceID + ", " + primaryContactID + ", " + secondaryContactID;
+                result = SQLHelper.Exec_SQLNonQuery(query);
 
                 string script = "alert(\"Team Updated!\");";
-                ScriptManager.RegisterStartupScript(this, GetType(),
-                                      "ServerControlScript", script, true);
+                ScriptManager.RegisterStartupScript(this, GetType(),"ServerControlScript", script, true);
             }
 
             Session["teamID"] = teamID;
@@ -127,26 +103,11 @@ namespace Schedule
             GridViewRow row = grd_HomeField.Rows[index];
             string fieldName = row.Cells[3].Text;
 
-            if (e.CommandName == "remove")
-            {
-                string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
-                using (SqlConnection con = new SqlConnection(CS))
-                {
-                    //Get the ID for the field
-                    SqlCommand cmd = new SqlCommand("SELECT field_id FROM dbo.field WHERE field_name = '" + fieldName + "'", con);
-                    con.Open();
-                    int fieldID = (int)cmd.ExecuteScalar();
-                    cmd.Dispose();
-                    con.Close();
+            string query = "SELECT field_id FROM dbo.field WHERE field_name = '" + fieldName + "'";
+            int fieldID = SQLHelper.Exec_SQLScalarInt(query);
 
-                    //Remove that record from home_field
-                    cmd.CommandText = "EXEC dbo.pr_home_field_delete " + teamID + ", " + fieldID;
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    cmd.Dispose();
-                    con.Close();
-                }
-            }
+            query = "EXEC dbo.pr_home_field_delete " + teamID + ", " + fieldID;
+            bool result = SQLHelper.Exec_SQLNonQuery(query);
 
             grd_HomeField.DataBind();
             dd_field.DataBind();
@@ -163,15 +124,8 @@ namespace Schedule
             string leagueID = (string)Session["leagueID"];
             string fieldID = dd_field.SelectedValue;
 
-            string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
-            {
-                SqlCommand cmd = new SqlCommand("EXEC dbo.pr_home_field_insert " + teamID + ", " + fieldID, con);
-                con.Open();
-                cmd.ExecuteNonQuery();
-                cmd.Dispose();
-                con.Close();
-            }
+            string query = "EXEC dbo.pr_home_field_insert " + teamID + ", " + fieldID;
+            bool result = SQLHelper.Exec_SQLNonQuery(query);
 
             lbl_homeField.Text = "";
             grd_HomeField.DataBind();
@@ -188,16 +142,8 @@ namespace Schedule
 
             if (e.CommandName == "remove")
             {
-                string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
-                using (SqlConnection con = new SqlConnection(CS))
-                {
-                    //Get the ID for the field
-                    SqlCommand cmd = new SqlCommand("EXEC dbo.pr_off_day_delete " + teamID + ", '" + offDay + "'", con);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    cmd.Dispose();
-                    con.Close();
-                }
+                string query = "EXEC dbo.pr_off_day_delete " + teamID + ", '" + offDay + "'";
+                bool result = SQLHelper.Exec_SQLNonQuery(query);
             }
 
             grd_offDay.DataBind();
@@ -210,26 +156,10 @@ namespace Schedule
 
         protected bool db_InsertNewOffDay(string teamID, string offDay)
         {
-            string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
-            {
-                SqlCommand cmd = new SqlCommand("EXEC dbo.pr_off_day_insert " + teamID + ", '" + offDay + "'", con);
-                con.Open();
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                    return true;
-                }
-                catch 
-                {
-                    return false;
-                }
-                finally
-                {
-                    cmd.Dispose();
-                    con.Close();
-                }  
-            }
+            string query = "EXEC dbo.pr_off_day_insert " + teamID + ", '" + offDay + "'";
+            bool result = SQLHelper.Exec_SQLNonQuery(query);
+
+            return result;
         }
 
         protected void btn_addOffDay_Click(object sender, EventArgs e)

@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using Schedule.Library;
 
 namespace Schedule
 {
@@ -15,37 +16,31 @@ namespace Schedule
         protected void Page_Load(object sender, EventArgs e)
         {
             string leagueID = (string)Session["leagueID"];
-
-            Session["teamID"] = "-1";
-
-            string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
+            string query;
+  
+            if (!Page.IsPostBack)
             {
-                SqlCommand cmd = new SqlCommand("EXEC dbo.pr_league_get " + leagueID, con);
-                con.Open();
-                SqlDataReader leagueSource = cmd.ExecuteReader();
-                while (leagueSource.Read())
+                Session["teamID"] = "-1";
+
+                query = "EXEC dbo.pr_league_get " + leagueID;
+                DataTable leagueSource = SQLHelper.Exec_SQLReaderDataTable(query);
+                foreach (DataRow row in leagueSource.Rows)
                 {
-                    lbl_leagueName.Text = (string)leagueSource.GetValue(1);
-                    lbl_numberTeams.Text = (string)leagueSource.GetValue(2).ToString();
-                    lbl_numberGames.Text = (string)leagueSource.GetValue(3).ToString();
-                    lbl_numberPermits.Text = (string)leagueSource.GetValue(4).ToString();
-                    lbl_minimumPermits.Text = "(" + (string)leagueSource.GetValue(5).ToString() + " permits required)";
-                    lbl_numberConferences.Text = (string)leagueSource.GetValue(6).ToString();
-                    lbl_numberConferenceGames.Text = (string)leagueSource.GetValue(7).ToString();
-                    lbl_PrimaryContact.Text = (string)leagueSource.GetValue(9);
-                    lbl_PrimaryContactPhone.Text = (string)leagueSource.GetValue(10).ToString();
-                    lbl_PrimaryContactEmail.Text = (string)leagueSource.GetValue(11);
-                    lbl_secondaryContact.Text = (string)leagueSource.GetValue(13);
-                    lbl_secondaryContactPhone.Text = (string)leagueSource.GetValue(14).ToString();
-                    lbl_secondaryContactEmail.Text = (string)leagueSource.GetValue(15);
+                    lbl_leagueName.Text = row["league_name"].ToString();
+                    lbl_numberTeams.Text = row["number_of_teams"].ToString();
+                    lbl_numberGames.Text = row["number_of_games"].ToString();
+                    lbl_numberPermits.Text = row["number_of_permits"].ToString();
+                    lbl_minimumPermits.Text = "(" + row["minimum_number_of_permits"].ToString() +" permits required)";
+                    lbl_numberConferences.Text = row["number_of_conferences"].ToString();
+                    lbl_numberConferenceGames.Text = row["number_of_games_in_conference"].ToString();
+                    lbl_PrimaryContact.Text = row["primary_contact"].ToString();
+                    lbl_PrimaryContactPhone.Text = row["primary_contact_phone"].ToString();
+                    lbl_PrimaryContactEmail.Text = row["primary_contact_email"].ToString();
+                    lbl_secondaryContact.Text = row["secondary_contact"].ToString();
+                    lbl_secondaryContactPhone.Text = row["secondary_contact_phone"].ToString();
+                    lbl_secondaryContactEmail.Text = row["secondary_contact_email"].ToString();
                 }
-                leagueSource.Close();
-                cmd.Dispose();
-                con.Close();
-
             }
-
            
         }
 
@@ -54,18 +49,6 @@ namespace Schedule
             Response.Redirect("LeagueEdit.aspx");
         }
 
-        //protected void grd_team_EditButtonClick(object sender, EventArgs e, GridViewCommandEventArgs c)
-        //{
-        //    int indexID = (int)c.CommandArgument;
-
-        //    GridViewRow row = grd_team.Rows[indexID];
-
-        //    string teamID = row.Cells[0].Text;
-
-        //    Session["teamID"] = teamID;
-
-        //    Response.Redirect("TeamEdit.aspx");
-        //}
 
         protected void grd_team_RowCommand(Object sender, GridViewCommandEventArgs e)
         {
@@ -74,18 +57,9 @@ namespace Schedule
             int index = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = grd_team.Rows[index];
             string team_name = row.Cells[1].Text;
-            string team_id;
 
-            string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
-            {
-                SqlCommand cmd = new SqlCommand("SELECT CONVERT(VARCHAR(3),team_id) FROM dbo.team WHERE team_name = '" + team_name + "'", con);
-                con.Open();
-                team_id = (string)cmd.ExecuteScalar();
-                cmd.Dispose();
-                con.Close();
-            }
-
+            string query = "SELECT CONVERT(VARCHAR(3),team_id) FROM dbo.team WHERE team_name = '" + team_name + "'";
+            string team_id = SQLHelper.Exec_SQLScalarString(query);
             Session["teamID"] = team_id;
 
             if (e.CommandName == "Permits")
@@ -99,18 +73,11 @@ namespace Schedule
 
             if (e.CommandName == "Del")
             {
-                using (SqlConnection con = new SqlConnection(CS))
-                {
-                    SqlCommand cmd = new SqlCommand("EXEC dbo.pr_team_delete " + team_id, con);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    cmd.Dispose();
-                    con.Close();
+                query = "EXEC dbo.pr_team_delete " + team_id;
+                bool result = SQLHelper.Exec_SQLNonQuery(query);
 
-                    string script = "alert(\"" + team_name + "has been Removed.\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(),
-                                      "ServerControlScript", script, true);
-                }
+                string script = "alert(\"" + team_name + "has been Removed.\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
 
                 grd_team.DataBind();
             }
@@ -121,21 +88,11 @@ namespace Schedule
             string fieldID = (string)Session["fieldID"];
             string leagueID = (string)Session["leagueID"];
 
-            string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
-            {
-                SqlCommand cmd = new SqlCommand("SELECT CONVERT(VARCHAR(3),MIN(field_id)) FROM dbo.field", con);
-                con.Open();
-                Session["fieldID"] = cmd.ExecuteScalar();
-                cmd.Dispose();
-                con.Close();
+            string query = "SELECT CONVERT(VARCHAR(3),MIN(field_id)) FROM dbo.field";
+            Session["fieldID"] = SQLHelper.Exec_SQLScalarString(query);
 
-                cmd.CommandText = "SELECT CONVERT(VARCHAR(3),MIN(t.team_id)) FROM dbo.team t INNER JOIN dbo.conference c ON t.conference_id = c.conference_id AND c.league_id = " + leagueID;
-                con.Open();
-                Session["teamID"] = cmd.ExecuteScalar();
-                cmd.Dispose();
-                con.Close();
-            }
+            query = "SELECT CONVERT(VARCHAR(3),MIN(t.team_id)) FROM dbo.team t INNER JOIN dbo.conference c ON t.conference_id = c.conference_id AND c.league_id = " + leagueID;
+            Session["teamID"] = SQLHelper.Exec_SQLScalarString(query);
 
             Response.Redirect("PermitHomebyField.aspx");
         }
@@ -144,16 +101,9 @@ namespace Schedule
         {
             string leagueID = (string)Session["leagueID"];
 
-            string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
-            {
-                SqlCommand cmd = new SqlCommand("SELECT CONVERT(VARCHAR(3),ISNULL((SELECT MAX(stg_id) FROM matchup WHERE league_id = " + leagueID + "),-1))", con);
-                con.Open();
-                Session["stgID"] = cmd.ExecuteScalar();
-                cmd.Dispose();
-                con.Close();
-            }
-            
+            string query = "SELECT CONVERT(VARCHAR(3),ISNULL((SELECT MAX(stg_id) FROM matchup WHERE league_id = " + leagueID + "),-1))";
+            Session["stgID"] = SQLHelper.Exec_SQLScalarString(query);
+
             Response.Redirect("Schedule.aspx");
         }
 

@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using Schedule.Library;
 
 namespace Schedule
 {
@@ -138,27 +139,11 @@ namespace Schedule
 
         protected bool db_InsertNewPermit(string leagueID, string date, string time, string am_pm, string fieldID, string teamID)
         {
-            string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
-            {
-                SqlCommand cmd = new SqlCommand("EXEC dbo.pr_permit_insert " + leagueID + ", '" + date + "', '" + time + "', '" + am_pm + "', " + fieldID + ", " + teamID + ", " + teamID, con);
-                con.Open();
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                    return true;
-                }
-                catch 
-                { 
-                    return false; 
-                }
-                finally 
-                { 
-                    cmd.Dispose();
-                    con.Close();
-                }
-               
-            }
+
+            string query = "EXEC dbo.pr_permit_insert " + leagueID + ", '" + date + "', '" + time + "', '" + am_pm + "', " + fieldID + ", " + teamID + ", " + teamID;
+            bool result = SQLHelper.Exec_SQLNonQuery(query);
+
+            return result;
         }
 
 

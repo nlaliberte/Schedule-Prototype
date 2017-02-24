@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using Schedule.Library;
 
 namespace Schedule
 {
@@ -26,14 +27,9 @@ namespace Schedule
                 dd_team.SelectedValue = teamID;
             }
 
-            string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
-            {
-                SqlCommand cmd = new SqlCommand("SELECT CONVERT(VARCHAR(3),COUNT(1)) FROM dbo.permit WHERE home_team_id = "+ teamID, con);
-                con.Open();
-                lbl_numberofPermits.Text = (string)cmd.ExecuteScalar();
-                lbl_team.Text = dd_team.SelectedItem.Text + ": ";
-            }
+            string query = "SELECT CONVERT(VARCHAR(3),COUNT(1)) FROM dbo.permit WHERE home_team_id = " + teamID;
+            lbl_numberofPermits.Text = SQLHelper.Exec_SQLScalarString(query);
+            lbl_team.Text = dd_team.SelectedItem.Text + ": ";
 
             grd_permitDetail.DataBind();
             grd_permitDetail.Sort("permit_date", SortDirection.Ascending);
@@ -41,18 +37,12 @@ namespace Schedule
 
         protected void dd_field_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Session["teamID"] = dd_team.SelectedValue;
+            string teamID =  dd_team.SelectedValue;
+            Session["teamID"] = teamID;
 
-            string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
-            {
-                string teamID = (string)Session["teamID"];
-
-                SqlCommand cmd = new SqlCommand("SELECT CONVERT(VARCHAR(3),COUNT(1)) FROM dbo.permit WHERE home_team_id = " + teamID, con);
-                con.Open();
-                lbl_numberofPermits.Text = (string)cmd.ExecuteScalar();
-                lbl_team.Text = dd_team.SelectedItem.Text + ": ";
-            }
+            string query = "SELECT CONVERT(VARCHAR(3),COUNT(1)) FROM dbo.permit WHERE home_team_id = " + teamID;
+            lbl_numberofPermits.Text = SQLHelper.Exec_SQLScalarString(query);
+            lbl_team.Text = dd_team.SelectedItem.Text + ": ";
 
             grd_permitDetail.DataBind();
             grd_permitDetail.Sort("permit_date", SortDirection.Ascending);

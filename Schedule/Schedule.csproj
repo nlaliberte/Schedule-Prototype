@@ -116,6 +116,8 @@
     <Compile Include="LeagueEdit.aspx.designer.cs">
       <DependentUpon>LeagueEdit.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Library\SQLHelper.cs" />
+    <Compile Include="Library\WarningHelper.cs" />
     <Compile Include="PermitEdit.aspx.cs">
       <DependentUpon>PermitEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

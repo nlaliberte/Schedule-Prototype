@@ -7,11 +7,13 @@ using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using Schedule.Library;
 
 namespace Schedule
 {
     public partial class Schedule : System.Web.UI.Page
-    {
+    {     
+
         protected void Page_Load(object sender, EventArgs e)
         { 
             if (!Page.IsPostBack)
@@ -20,17 +22,9 @@ namespace Schedule
 
                 string leagueID = (string)Session["leagueID"];
                 string stgID = (string)Session["stgID"];
-                string teamID;
 
-                string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
-                using (SqlConnection con = new SqlConnection(CS))
-                {
-                    SqlCommand cmd = new SqlCommand("SELECT CONVERT(VARCHAR(3),MIN(t.team_id)) FROM dbo.team t INNER JOIN dbo.conference c ON t.conference_id = c.conference_id AND c.league_id = " + leagueID, con);
-                    con.Open();
-                    teamID = (string)cmd.ExecuteScalar();
-                    cmd.Dispose();
-                    con.Close();
-                }
+                string query = "SELECT CONVERT(VARCHAR(3),MIN(t.team_id)) FROM dbo.team t INNER JOIN dbo.conference c ON t.conference_id = c.conference_id AND c.league_id = " + leagueID;
+                string teamID = SQLHelper.Exec_SQLScalarString(query);
 
                 Session["teamID"] = teamID;
 
@@ -45,24 +39,12 @@ namespace Schedule
         protected void nullScheduleWarnings(string stgID)
         {
             string leagueID = (string)Session["leagueID"];
-            int stgCount;
-            int stgChosenCount;
 
-            string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
-            {
-                SqlCommand cmd = new SqlCommand("SELECT ISNULL(COUNT(DISTINCT stg_id),0) FROM dbo.stg_stats WHERE league_id = " + leagueID, con);
-                con.Open();
-                stgCount = (int)cmd.ExecuteScalar();
-                cmd.Dispose();
-                con.Close();
+            string query = "SELECT ISNULL(COUNT(DISTINCT stg_id),0) FROM dbo.stg_stats WHERE league_id = " + leagueID;
+            int stgCount = SQLHelper.Exec_SQLScalarInt(query);
 
-                cmd.CommandText = "SELECT CASE WHEN MAX(stg_id) IS NULL THEN 0 ELSE 1 END FROM dbo.matchup WHERE league_id = " + leagueID;
-                con.Open();
-                stgChosenCount = (int)cmd.ExecuteScalar();
-                cmd.Dispose();
-                con.Close();
-            }
+            query = "SELECT CASE WHEN MAX(stg_id) IS NULL THEN 0 ELSE 1 END FROM dbo.matchup WHERE league_id = " + leagueID;
+            int stgChosenCount = SQLHelper.Exec_SQLScalarInt(query);
 
             if(stgID == "-1")
             {
@@ -97,20 +79,14 @@ namespace Schedule
             int index = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = grd_schedule.Rows[index];
             string stgID = row.Cells[3].Text;
+            string query;
 
             if (e.CommandName == "select")
             {
                 Session["stgID"] = stgID;
 
-                string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
-                using (SqlConnection con = new SqlConnection(CS))
-                {
-                    SqlCommand cmd = new SqlCommand("EXEC dbo.sch_stg_select " + leagueID + ", " + stgID, con);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    cmd.Dispose();
-                    con.Close();
-                }
+                query = "EXEC dbo.sch_stg_select " + leagueID + ", " + stgID;
+                bool result = SQLHelper.Exec_SQLNonQuery(query);
 
                 grd_scheduleChosen.DataBind();
                 grd_schedule.DataBind();
@@ -131,26 +107,17 @@ namespace Schedule
 
             if(e.CommandName == "del")
             {
-                string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
-                using (SqlConnection con = new SqlConnection(CS))
-                {
-                    SqlCommand cmd = new SqlCommand("EXEC dbo.sch_stg_delete " + leagueID + ", " + stgID, con);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    cmd.Dispose();
-                    con.Close();
-                }
+                query = "EXEC dbo.sch_stg_delete " + leagueID + ", " + stgID;
+                bool result = SQLHelper.Exec_SQLNonQuery(query);
 
                 string script = "alert(\"Potential Schedule ID: " + stgID + " has been Removed.\");";
-                ScriptManager.RegisterStartupScript(this, GetType(),
-                                  "ServerControlScript", script, true);
+                ScriptManager.RegisterStartupScript(this, GetType(),"ServerControlScript", script, true);
 
                 grd_schedule.DataBind();
 
                 nullScheduleWarnings((string)Session["stgID"]);
             }
-
-            
+    
         }
 
         protected void btn_createSchedule_Click(object sender, EventArgs e)
@@ -158,6 +125,8 @@ namespace Schedule
             string leagueID = (string)Session["leagueID"];
             string numSchedule = txt_numSchedule.Text;
             string stgID = (string)Session["stgID"];
+            string query;
+            Page page = (Page)HttpContext.Current.Handler;
 
             if (
                     numSchedule != "1" 
@@ -174,28 +143,20 @@ namespace Schedule
             {
                 txt_numSchedule.BackColor = System.Drawing.Color.LightPink;
 
+                //message = "Please enter a valid number between 1 and 10.";
+                //WarningHelper.Warning_Notification(message, page);
                 string script = "alert(\"Please enter a valid number between 1 and 10\");";
-                ScriptManager.RegisterStartupScript(this, GetType(),
-                                      "ServerControlScript", script, true);
+                ScriptManager.RegisterStartupScript(this, GetType(),"ServerControlScript", script, true);
             }
             else
             {
                 txt_numSchedule.BackColor = System.Drawing.Color.White;
-                
-                string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
-                using (SqlConnection con = new SqlConnection(CS))
-                {
-                    SqlCommand cmd = new SqlCommand("EXEC dbo.run_schedule_stg " + leagueID + ", " + numSchedule + ", 0", con);
-                    cmd.CommandTimeout = 1200;
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    cmd.Dispose();
-                    con.Close();
-                }
+
+                query = "EXEC dbo.run_schedule_stg " + leagueID + ", " + numSchedule + ", 0";
+                bool result = SQLHelper.Exec_SQLNonQuery(query);
 
                 string script = "alert(\"" + numSchedule + " Schedule(s) Created!\");";
-                ScriptManager.RegisterStartupScript(this, GetType(),
-                                      "ServerControlScript", script, true);
+                ScriptManager.RegisterStartupScript(this, GetType(),"ServerControlScript", script, true);
 
                 grd_schedule.DataBind();
             }
@@ -215,7 +176,7 @@ namespace Schedule
 
             int index = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = grd_scheduleChosen.Rows[index];
-            string stgID = row.Cells[1].Text;
+            string stgID = row.Cells[2].Text;
 
             if(e.CommandName == "preview")
             {
@@ -224,9 +185,28 @@ namespace Schedule
                 grd_scheduleByTeam.DataBind();
                 Response.Redirect("Schedule.aspx" + "#preview", false);
             }
+
+            if(e.CommandName == "export")
+            {
+                DataTable dt = new DataTable();
+
+                string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
+                using (SqlConnection con = new SqlConnection(CS))
+                {
+                    SqlDataAdapter sda = new SqlDataAdapter("EXEC dbo.sch_stg_export " + leagueID + ", " + stgID, con);
+                    con.Open();
+                    sda.Fill(dt);
+                    sda.Dispose();
+                    con.Close();
+                }
+
+                Page page = (Page)HttpContext.Current.Handler;
+
+                SQLHelper.Exec_SQLExcelExport(dt, page);
+                
+            }
+
         }
-
-
 
     }
 }
