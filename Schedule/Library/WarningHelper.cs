@@ -18,5 +18,17 @@ namespace Schedule.Library
         //    ScriptManager.RegisterStartupScript(page, GetType(), "ServerControlScript", script, true);
         //}
 
+
+        public static bool val_DateTime(string date, string time)
+        {
+            if (date == "")
+            { return false; }
+
+            if (time == "")
+            { return false; }
+
+            return true;
+        }
+
     }
 }

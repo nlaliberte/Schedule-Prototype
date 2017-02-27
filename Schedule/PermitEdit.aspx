@@ -9,6 +9,9 @@
 <body>
     <form id="form1" runat="server">
     <div>
+        <asp:HyperLink ID="lnk_PermitHome" runat="server" Font-Italic="True" Font-Size="Smaller" NavigateUrl="">(Permit Home URL)</asp:HyperLink>
+        <br />
+        <br />
         Permit Edit Page:<br />
         <table id="tbl_permitDetails">
             <tr>
@@ -28,7 +31,12 @@
             </tr>
             <tr>
                 <td class="auto-style1">Time:</td>
-                <td><asp:TextBox ID="txt_time" runat="server" Width="87px"></asp:TextBox></td>
+                <td><asp:TextBox ID="txt_time" runat="server" Width="87px"></asp:TextBox>
+                    <asp:DropDownList ID="dd_ampm" runat="server">
+                        <asp:ListItem>AM</asp:ListItem>
+                        <asp:ListItem>PM</asp:ListItem>
+                    </asp:DropDownList>
+                </td>
             </tr>
             <tr>
                 <td class="auto-style1">Acquiring Team:</td>
@@ -47,7 +55,7 @@
                 <td>
                     <center><table>
                         <tr>
-                            <td><asp:Button ID="btn_cancel" runat="server" Text="Cancel" /></td>
+                            <td><asp:Button ID="btn_cancel" runat="server" Text="Cancel" OnClick="btn_cancel_Click" /></td>
                             <td width ="10"></td>
                             <td><asp:Button ID="btn_save" runat="server" Text="Save" Width="60px" OnClick="btn_save_Click" /></td>
                         </tr>

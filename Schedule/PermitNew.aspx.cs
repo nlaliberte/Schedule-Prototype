@@ -126,17 +126,6 @@ namespace Schedule
             }
         }
 
-        protected bool val_DateTime(string date, string time)
-        {
-            if(date == "")
-            { return false; }
-
-            if(time =="")
-            { return false; }
-
-            return true;
-        }
-
         protected bool db_InsertNewPermit(string leagueID, string date, string time, string am_pm, string fieldID, string teamID)
         {
 
@@ -184,7 +173,7 @@ namespace Schedule
                 return;
             }
 
-            bool valid = val_DateTime(date, time);
+            bool valid = WarningHelper.val_DateTime(date, time);
             if (valid == false)
             {
                 lbl_error.Text = "Please enter a valid Date/Time.";

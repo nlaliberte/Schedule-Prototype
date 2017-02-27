@@ -22,6 +22,15 @@ namespace Schedule {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// lnk_PermitHome control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnk_PermitHome;
+        
+        /// <summary>
         /// dd_field control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace Schedule {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_time;
+        
+        /// <summary>
+        /// dd_ampm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dd_ampm;
         
         /// <summary>
         /// dd_team control.
