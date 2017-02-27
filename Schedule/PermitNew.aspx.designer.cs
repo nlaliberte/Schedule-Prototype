@@ -49,6 +49,15 @@ namespace Schedule {
         protected global::System.Web.UI.WebControls.Button btn_back;
         
         /// <summary>
+        /// row1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow row1;
+        
+        /// <summary>
         /// dd_team1 control.
         /// </summary>
         /// <remarks>
@@ -121,6 +130,24 @@ namespace Schedule {
         protected global::System.Web.UI.WebControls.Label lbl_error1;
         
         /// <summary>
+        /// row1_2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow row1_2;
+        
+        /// <summary>
+        /// row2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow row2;
+        
+        /// <summary>
         /// dd_team2 control.
         /// </summary>
         /// <remarks>
@@ -173,6 +200,15 @@ namespace Schedule {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_error2;
+        
+        /// <summary>
+        /// row2_2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow row2_2;
         
         /// <summary>
         /// dd_team3 control.

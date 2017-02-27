@@ -18,8 +18,6 @@ namespace Schedule
         { 
             if (!Page.IsPostBack)
             {
-                Session["exportID"] = (int)1;
-
                 txt_numSchedule.Text = "10";
 
                 string leagueID = (string)Session["leagueID"];
@@ -190,7 +188,6 @@ namespace Schedule
 
             if(e.CommandName == "export")
             {
-                int exportID = (int)Session["exportID"];
                 DataTable dt = new DataTable();
 
                 string CS = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
@@ -205,9 +202,9 @@ namespace Schedule
 
                 Page page = (Page)HttpContext.Current.Handler;
 
-                SQLHelper.Exec_SQLExcelExport(dt, page, exportID);
+                string filename = "Schedule_" + stgID;
 
-                Session["exportID"] = exportID + 1;
+                SQLHelper.Exec_SQLExcelExport(dt, page, filename);
                 
             }
 

@@ -75,18 +75,9 @@ namespace Schedule.Library
             return result;
         }
 
-        public static void Exec_SQLExcelExport(DataTable dt, System.Web.UI.Page page, int exportID)
+        public static void Exec_SQLExcelExport(DataTable dt, System.Web.UI.Page page, string filename)
         {
-            string attach;
-
-            if (exportID == 1)
-            {
-                attach = "attachment;filename=schedule.xls";
-            }
-            else
-            {
-                attach = "attachment;filename=schedule(" + exportID + ").xls";
-            }
+            string attach = "attachment;filename=" + filename + ".xls";
 
             page.Response.ClearContent();
             page.Response.AddHeader("content-disposition", attach);

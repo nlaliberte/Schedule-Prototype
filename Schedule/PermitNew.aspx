@@ -39,7 +39,7 @@
                 <td style="vertical-align:top" class="auto-style1">Field</td>
                 <td style="vertical-align:top" class="auto-style1"></td>
             </tr>
-            <tr>
+            <tr runat="server" id="row1">
                 <td style="vertical-align:top"><asp:DropDownList Width="200px"  ID="dd_team1" runat="server" DataSourceID="SqlDataSource_Team" DataTextField="team_name" DataValueField="team_id" Height="25px"></asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource_Team" runat="server" ConnectionString="<%$ ConnectionStrings:ScheduleConnectionString %>" SelectCommand="pr_team_getall" SelectCommandType="StoredProcedure">
                         <SelectParameters>
@@ -63,8 +63,8 @@
                 </td>
                 <td style="vertical-align:top"><asp:Label ID="lbl_error1" runat="server" Text=""></asp:Label></td>
             </tr>
-            <tr style="height:5px"><td style="vertical-align:top"></td></tr>
-            <tr>
+            <tr runat="server" id="row1_2" style="height:5px"><td style="vertical-align:top"></td></tr>
+            <tr runat="server" id="row2">
                 <td style="vertical-align:top"><asp:DropDownList Width="200px"  Height="25px" ID="dd_team2" runat="server" DataSourceID="SqlDataSource_Team" DataTextField="team_name" DataValueField="team_id"></asp:DropDownList></td>
                 <td style="vertical-align:top"><asp:TextBox Width="75px" Height="19px" ID="txt_date2" runat="server"></asp:TextBox></td>
                 <td style="vertical-align:top"><asp:TextBox Width="75px" Height="19px" ID="txt_time2" runat="server"></asp:TextBox></td>
@@ -75,7 +75,7 @@
                 <td style="vertical-align:top"><asp:DropDownList Width="200px"  Height="25px" ID="dd_field2" runat="server" DataSourceID="SqlDataSource_Field" DataTextField="field_name" DataValueField="field_id"></asp:DropDownList></td>
                 <td style="vertical-align:top"><asp:Label ID="lbl_error2" runat="server" Text=""></asp:Label></td>
             </tr>
-            <tr style="height:5px"><td style="vertical-align:top"></td></tr>
+            <tr runat="server" id="row2_2" style="height:5px"><td style="vertical-align:top"></td></tr>
             <tr>
                 <td style="vertical-align:top"><asp:DropDownList Width="200px"  ID="dd_team3" runat="server" DataSourceID="SqlDataSource_Team" DataTextField="team_name" DataValueField="team_id"></asp:DropDownList></td>
                 <td style="vertical-align:top"><asp:TextBox Width="75px" ID="txt_date3" runat="server"></asp:TextBox></td>

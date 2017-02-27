@@ -63,7 +63,7 @@ namespace Schedule
 
             int index = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = grd_permitDetail.Rows[index];
-            string date = row.Cells[3].Text;
+            string date = row.Cells[2].Text;
             string teamName = row.Cells[5].Text;
 
             string query = "SELECT CONVERT(VARCHAR(3),p.permit_id) FROM dbo.permit p INNER JOIN dbo.team t ON p.home_team_id = t.team_id AND t.team_name = '" + @teamName + "' WHERE CONVERT(DATE,p.permit_date) = CONVERT(DATE,'" + @date + "')";

@@ -31,6 +31,15 @@ namespace Schedule {
         protected global::System.Web.UI.WebControls.DropDownList dd_field;
         
         /// <summary>
+        /// SqlDataSource_Field control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_Field;
+        
+        /// <summary>
         /// txt_date control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace Schedule {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList dd_team;
+        
+        /// <summary>
+        /// SqlDataSource_Team control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_Team;
         
         /// <summary>
         /// btn_cancel control.

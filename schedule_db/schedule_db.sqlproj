@@ -120,5 +120,6 @@
     <PostDeploy Include="Post Deployment Scripts\Post_Deployment.script.sql" />
     <Build Include="dbo\Stored Procedures\sch_stg_delete.sql" />
     <Build Include="dbo\Stored Procedures\sch_stg_export_1.sql" />
+    <Build Include="dbo\Stored Procedures\pr_permit_get.sql" />
   </ItemGroup>
 </Project>
