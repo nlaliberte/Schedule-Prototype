@@ -2,6 +2,7 @@
 CREATE PROCEDURE [dbo].[deploy_seed_conference]
 AS
 BEGIN
+	TRUNCATE TABLE dbo.conference
 
 	INSERT INTO dbo.conference
 	VALUES

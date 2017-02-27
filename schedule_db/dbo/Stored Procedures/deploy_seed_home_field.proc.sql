@@ -2,6 +2,8 @@
 CREATE PROCEDURE [dbo].[deploy_seed_home_field]
 AS
 BEGIN
+	TRUNCATE TABLE dbo.home_field
+
 	INSERT INTO dbo.home_field
 	VALUES
 		(1, 1) --Al Thomas, Braintree High

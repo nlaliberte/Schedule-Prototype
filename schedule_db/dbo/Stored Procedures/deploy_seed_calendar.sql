@@ -1,6 +1,8 @@
 ﻿CREATE PROCEDURE [dbo].[deploy_seed_calendar]
 AS
 BEGIN
+	TRUNCATE TABLE dbo.calendar
+
 	DECLARE @StartDate DATE = '20000101', @NumberOfYears INT = 30;
 
 	-- prevent set or regional settings from interfering with 

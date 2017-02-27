@@ -3,6 +3,7 @@
 CREATE PROCEDURE [dbo].[deploy_seed_field]
 AS
 BEGIN
+	TRUNCATE TABLE dbo.field
 
 	INSERT INTO dbo.field
 	VALUES

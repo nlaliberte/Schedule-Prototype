@@ -1,6 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[deploy_seed_league]
 AS
-BEGIN
+BEGIN	
+	TRUNCATE TABLE dbo.league
 	INSERT INTO dbo.league
 	SELECT 
 		1

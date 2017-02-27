@@ -7,6 +7,7 @@
 CREATE PROCEDURE [dbo].[deploy_seed_contact]
 AS
 BEGIN
+	TRUNCATE TABLE dbo.contact
 
 	INSERT INTO dbo.contact
 	VALUES
