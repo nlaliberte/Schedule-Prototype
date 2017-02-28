@@ -10,7 +10,7 @@
 namespace Schedule {
     
     
-    public partial class ContactNew {
+    public partial class ManageContact {
         
         /// <summary>
         /// form1 control.
@@ -22,57 +22,48 @@ namespace Schedule {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// txt_firstName control.
+        /// link_home control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_firstName;
+        protected global::System.Web.UI.WebControls.HyperLink link_home;
         
         /// <summary>
-        /// txt_lastName control.
+        /// lbl_header control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_lastName;
+        protected global::System.Web.UI.WebControls.Label lbl_header;
         
         /// <summary>
-        /// txt_phone control.
+        /// link_contactNew control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_phone;
+        protected global::System.Web.UI.WebControls.HyperLink link_contactNew;
         
         /// <summary>
-        /// txt_email control.
+        /// grd_contact control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_email;
+        protected global::System.Web.UI.WebControls.GridView grd_contact;
         
         /// <summary>
-        /// btn_cancel control.
+        /// SqlDataSource_Contacts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_cancel;
-        
-        /// <summary>
-        /// btn_save control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_save;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_Contacts;
     }
 }

@@ -49,6 +49,24 @@ namespace Schedule {
         protected global::System.Web.UI.WebControls.Button btn_editLeague;
         
         /// <summary>
+        /// btn_manageContacts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_manageContacts;
+        
+        /// <summary>
+        /// btn_manageFields control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_manageFields;
+        
+        /// <summary>
         /// btn_managePermits control.
         /// </summary>
         /// <remarks>

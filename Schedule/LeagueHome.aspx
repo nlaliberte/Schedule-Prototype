@@ -40,11 +40,15 @@ function confirmDelete()
             <tr>
                 <td><asp:Label ID="lbl_leagueName" runat="server" Text="(League Name)" Font-Bold="True" Font-Size="Large"></asp:Label></td>
                 <td style="width:20px"></td>
-                <td><asp:Button ID="btn_editLeague" runat="server" Text="Edit League" Font-Size="Smaller" OnClick="btn_editLeague_Click" /></td>
+                <td><asp:Button style="width:200px" ID="btn_editLeague" runat="server" Text="Edit League" Font-Size="Smaller" OnClick="btn_editLeague_Click" /></td>
                 <td style="width:20px"></td>
-                <td><asp:Button ID="btn_managePermits" runat="server" Text="Manage Permits" Font-Size="Smaller" OnClick="btn_managePermits_Click"/></td>
+                <td><asp:Button style="width:200px" ID="btn_manageContacts" runat="server" Text="Manage Fields" Font-Size="Smaller" OnClick="btn_manageFields_Click" /></td>
                 <td style="width:20px"></td>
-                <td><asp:Button ID="btn_manageSchedule" runat="server" Text="Manage Schedule" Font-Size="Smaller" OnClick="btn_manageSchedule_Click" /></td>
+                <td><asp:Button style="width:200px" ID="btn_manageFields" runat="server" Text="Manage Contacts" Font-Size="Smaller" OnClick="btn_manageContacts_Click" /></td>
+                <td style="width:20px"></td>
+                <td><asp:Button style="width:200px" ID="btn_managePermits" runat="server" Text="Manage Permits" Font-Size="Smaller" OnClick="btn_managePermits_Click"/></td>
+                <td style="width:20px"></td>
+                <td><asp:Button style="width:200px" ID="btn_manageSchedule" runat="server" Text="Manage Schedule" Font-Size="Smaller" OnClick="btn_manageSchedule_Click" /></td>
             </tr>
         </table>
         <br />

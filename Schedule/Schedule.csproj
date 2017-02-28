@@ -58,11 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ContactEdit.aspx" />
-    <Content Include="ContactNew.aspx" />
     <Content Include="DeleteItem.aspx" />
     <Content Include="FieldEdit.aspx" />
     <Content Include="FieldNew.aspx" />
     <Content Include="LeagueEdit.aspx" />
+    <Content Include="ManageContact.aspx" />
     <Content Include="PermitEdit.aspx" />
     <Content Include="PermitHomebyField.aspx" />
     <Content Include="PermitHomebyTeam.aspx" />
@@ -80,13 +80,6 @@
     </Compile>
     <Compile Include="ContactEdit.aspx.designer.cs">
       <DependentUpon>ContactEdit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ContactNew.aspx.cs">
-      <DependentUpon>ContactNew.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ContactNew.aspx.designer.cs">
-      <DependentUpon>ContactNew.aspx</DependentUpon>
     </Compile>
     <Compile Include="DeleteItem.aspx.cs">
       <DependentUpon>DeleteItem.aspx</DependentUpon>
@@ -118,6 +111,13 @@
     </Compile>
     <Compile Include="Library\SQLHelper.cs" />
     <Compile Include="Library\WarningHelper.cs" />
+    <Compile Include="ManageContact.aspx.cs">
+      <DependentUpon>ManageContact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageContact.aspx.designer.cs">
+      <DependentUpon>ManageContact.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PermitEdit.aspx.cs">
       <DependentUpon>PermitEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

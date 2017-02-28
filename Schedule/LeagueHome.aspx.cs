@@ -108,7 +108,15 @@ namespace Schedule
         }
 
 
+        protected void btn_manageFields_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ManageField.aspx");
+        }
 
+        protected void btn_manageContacts_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ManageContact.aspx");
+        }
 
 
 
