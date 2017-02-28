@@ -78,15 +78,12 @@ function confirmDelete()
                             <HeaderStyle Width="80px" />
                             <ItemStyle Width="80px" />
                             </asp:ButtonField>
-                            <asp:TemplateField>
-                                <ItemTemplate>
-                                    <asp:Button ID="btn_delete" runat="server" Text="Delete" CommandName="Del" OnClientClick="return confirmDelete();" CommandArgument='<%# Container.DataItemIndex %>' Width="80" />
-                                </ItemTemplate>
-                                <ControlStyle Width="80px" />
-                                <FooterStyle Width="80px" />
-                                <HeaderStyle Width="80px" />
-                                <ItemStyle Width="80px" />
-                            </asp:TemplateField>
+                            <asp:ButtonField ButtonType="Button" Text="Delete" CommandName="Del" >
+                            <ControlStyle Width="80px" />
+                            <FooterStyle Width="80px" />
+                            <HeaderStyle Width="80px" />
+                            <ItemStyle Width="80px" />
+                            </asp:ButtonField>
                         </Columns>
                     </asp:GridView>
                     <asp:SqlDataSource ID="SqlDataSource_PermitbyTeam" runat="server" ConnectionString="<%$ ConnectionStrings:ScheduleConnectionString %>" SelectCommand="pr_permit_field" SelectCommandType="StoredProcedure">

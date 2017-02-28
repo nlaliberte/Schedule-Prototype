@@ -27,7 +27,8 @@
             </tr>
             <tr>
                 <td class="auto-style1">Permit Date:</td>
-                <td><asp:TextBox ID="txt_date" runat="server" Width="120px"></asp:TextBox></td>
+                <td><asp:TextBox ID="txt_date" runat="server" Width="120px"></asp:TextBox>
+                </td>
             </tr>
             <tr>
                 <td class="auto-style1">Time:</td>

@@ -66,7 +66,7 @@ namespace Schedule
             string date = row.Cells[2].Text;
             string teamName = row.Cells[5].Text;
 
-            string query = "SELECT CONVERT(VARCHAR(3),p.permit_id) FROM dbo.permit p INNER JOIN dbo.team t ON p.home_team_id = t.team_id AND t.team_name = '" + @teamName + "' WHERE CONVERT(DATE,p.permit_date) = CONVERT(DATE,'" + @date + "')";
+            string query = "SELECT CONVERT(VARCHAR(3),p.permit_id) FROM dbo.permit p INNER JOIN dbo.team t ON p.home_team_id = t.team_id AND t.team_name = '" + teamName + "' WHERE CONVERT(DATE,p.permit_date) = CONVERT(DATE,'" + date + "') AND p.field_id = " + fieldID;
             string permitID = SQLHelper.Exec_SQLScalarString(query);
 
             Session["permitID"] = permitID;

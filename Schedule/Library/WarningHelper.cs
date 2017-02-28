@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using System.Text.RegularExpressions;
 
 namespace Schedule.Library
 {
@@ -21,10 +22,10 @@ namespace Schedule.Library
 
         public static bool val_DateTime(string date, string time)
         {
-            if (date == "")
+            if (!Regex.IsMatch(date, "^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\\d\\d$"))
             { return false; }
 
-            if (time == "")
+            if (!Regex.IsMatch(time, "^*(1[0-2]|[1-9]):[0-5][0-9]$"))
             { return false; }
 
             return true;
