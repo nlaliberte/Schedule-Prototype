@@ -49,10 +49,7 @@ namespace Schedule
             }
             else
             {
-                query = "SELECT CONVERT(VARCHAR(3),MAX(contact_id) + 1) FROM dbo.contact";
-                contactID = SQLHelper.Exec_SQLScalarString(query);
-
-                query = "EXEC dbo.pr_contact_insert " + contactID + ", " + (string)Session["leagueID"] + ", '" + txt_firstName.Text + "', '" + txt_lastName.Text + "', '" + phone + "', '" + email + "'";
+                query = "EXEC dbo.pr_contact_insert " + (string)Session["leagueID"] + ", '" + txt_firstName.Text + "', '" + txt_lastName.Text + "', '" + phone + "', '" + email + "'";
                 result = SQLHelper.Exec_SQLNonQuery(query);
             }
 

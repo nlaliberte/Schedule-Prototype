@@ -1,7 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[pr_contact_insert]
 	(
-		@contact_id		INT
-		,@league_id		INT
+		@league_id		INT
 		,@first_name	VARCHAR(255)
 		,@last_name		VARCHAR(255)
 		,@phone			VARCHAR(12)
@@ -9,7 +8,8 @@
 	)
 AS 
 BEGIN
-	
+	DECLARE @contact_id INT = (SELECT ISNULL(MAX(contact_id),1) + 1 FROM dbo.contact)
+
 	INSERT INTO dbo.contact
 	SELECT
 		@contact_id

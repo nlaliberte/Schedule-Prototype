@@ -60,9 +60,9 @@
     <Content Include="ContactEdit.aspx" />
     <Content Include="DeleteItem.aspx" />
     <Content Include="FieldEdit.aspx" />
-    <Content Include="FieldNew.aspx" />
     <Content Include="LeagueEdit.aspx" />
     <Content Include="ManageContact.aspx" />
+    <Content Include="ManageField.aspx" />
     <Content Include="PermitEdit.aspx" />
     <Content Include="PermitHomebyField.aspx" />
     <Content Include="PermitHomebyTeam.aspx" />
@@ -95,13 +95,6 @@
     <Compile Include="FieldEdit.aspx.designer.cs">
       <DependentUpon>FieldEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FieldNew.aspx.cs">
-      <DependentUpon>FieldNew.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FieldNew.aspx.designer.cs">
-      <DependentUpon>FieldNew.aspx</DependentUpon>
-    </Compile>
     <Compile Include="LeagueEdit.aspx.cs">
       <DependentUpon>LeagueEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -117,6 +110,13 @@
     </Compile>
     <Compile Include="ManageContact.aspx.designer.cs">
       <DependentUpon>ManageContact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManageField.aspx.cs">
+      <DependentUpon>ManageField.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageField.aspx.designer.cs">
+      <DependentUpon>ManageField.aspx</DependentUpon>
     </Compile>
     <Compile Include="PermitEdit.aspx.cs">
       <DependentUpon>PermitEdit.aspx</DependentUpon>

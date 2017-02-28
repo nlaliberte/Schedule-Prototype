@@ -127,5 +127,9 @@
     <Build Include="dbo\Stored Procedures\pr_contact_getall.sql" />
     <Build Include="dbo\Stored Procedures\pr_contact_get.sql" />
     <Build Include="dbo\Stored Procedures\pr_contact_delete.sql" />
+    <Build Include="dbo\Stored Procedures\pr_field_update.sql" />
+    <Build Include="dbo\Stored Procedures\pr_field_insert.sql" />
+    <Build Include="dbo\Stored Procedures\pr_field_get.sql" />
+    <Build Include="dbo\Stored Procedures\pr_field_delete.sql" />
   </ItemGroup>
 </Project>

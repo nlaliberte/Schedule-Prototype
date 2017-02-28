@@ -10,7 +10,7 @@
 namespace Schedule {
     
     
-    public partial class FieldEdit {
+    public partial class ManageField {
         
         /// <summary>
         /// form1 control.
@@ -22,66 +22,48 @@ namespace Schedule {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// txt_fieldName control.
+        /// link_home control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_fieldName;
+        protected global::System.Web.UI.WebControls.HyperLink link_home;
         
         /// <summary>
-        /// txt_addr1 control.
+        /// lbl_header control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_addr1;
+        protected global::System.Web.UI.WebControls.Label lbl_header;
         
         /// <summary>
-        /// txt_city control.
+        /// link_fieldNew control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_city;
+        protected global::System.Web.UI.WebControls.HyperLink link_fieldNew;
         
         /// <summary>
-        /// txt_state control.
+        /// grd_field control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_state;
+        protected global::System.Web.UI.WebControls.GridView grd_field;
         
         /// <summary>
-        /// txt_zip control.
+        /// SqlDataSource_Field control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_zip;
-        
-        /// <summary>
-        /// btn_cancel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_cancel;
-        
-        /// <summary>
-        /// btn_save control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_save;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_Field;
     }
 }

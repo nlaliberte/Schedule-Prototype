@@ -20,14 +20,6 @@
                 <td><asp:TextBox ID="txt_addr1" runat="server" Width="250px"></asp:TextBox></td>
             </tr>
             <tr>
-                <td>Address 2:</td>
-                <td><asp:TextBox ID="txt_addr2" runat="server" Width="250px"></asp:TextBox></td>
-            </tr>
-            <tr>
-                <td>Address 3:</td>
-                <td><asp:TextBox ID="txt_addr3" runat="server" Width="250px"></asp:TextBox></td>
-            </tr>
-            <tr>
                 <td>City:</td>
                 <td><asp:TextBox ID="txt_city" runat="server" Width="250px"></asp:TextBox></td>
             </tr>
@@ -40,25 +32,13 @@
                 <td><asp:TextBox ID="txt_zip" runat="server" Width="75px"></asp:TextBox></td>
             </tr>
             <tr>
-                <td>Primary Contact:</td>
-                <td><asp:DropDownList ID="dd_primaryContact" runat="server" Height="16px" Width="200px"></asp:DropDownList></td>
-            </tr>
-            <tr>
-                <td>Secondary Contact:</td>
-                <td><asp:DropDownList ID="dd_secondaryContact" runat="server" Height="21px" Width="200px"></asp:DropDownList></td>
-            </tr>
-            <tr>
-                <td>Phone:</td>
-                <td><asp:TextBox ID="txt_phone" runat="server"></asp:TextBox></td>
-            </tr>
-             <tr>
-                <td class="auto-style1"></td>
+                <td></td>
                 <td>
                     <center><table>
                         <tr>
-                            <td><asp:Button ID="btn_cancel" runat="server" Text="Cancel" /></td>
+                            <td><asp:Button ID="btn_cancel" runat="server" Text="Cancel" Width="80px" OnClick="btn_cancel_Click" /></td>
                             <td width ="10"></td>
-                            <td><asp:Button ID="btn_save" runat="server" Text="Save" Width="60px" /></td>
+                            <td><asp:Button ID="btn_save" runat="server" Text="Save" Width="80px" OnClick="btn_save_Click" /></td>
                         </tr>
                     </table></center>
                 </td>
