@@ -7,6 +7,8 @@ BEGIN
 			,permit_date_desc = CONVERT(VARCHAR(10),p.permit_date,101)
 			,permit_date_time = 
 				CASE 
+					WHEN DATEPART(HH,p.permit_date) = 0
+					THEN '12'
 					WHEN DATEPART(HH,p.permit_date) > 12 
 					THEN CONVERT(VARCHAR(2),DATEPART(HH,p.permit_date)-12)
 					ELSE CONVERT(VARCHAR(2),DATEPART(HH,p.permit_date))
@@ -16,6 +18,12 @@ BEGIN
 					WHEN DATEPART(MINUTE,p.permit_date) = 0
 					THEN '00'
 					ELSE CONVERT(VARCHAR(2),DATEPART(MINUTE,p.permit_date))
+				END
+				+' '+
+				CASE 
+					WHEN DATEPART(HH,p.permit_date) >= 12
+					THEN 'PM'
+					ELSE 'AM'
 				END
 			,p.home_team_id
 			,team_name = ISNULL(t.team_name,'League')

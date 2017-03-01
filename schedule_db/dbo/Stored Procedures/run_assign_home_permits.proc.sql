@@ -81,6 +81,8 @@ BEGIN
 					h.team_id = @home_team_id
 					--Make sure the team doesn't already have a permit on this day
 					AND NOT EXISTS (SELECT home_team_id FROM stg_permit WHERE stg_id = @stg_id AND home_team_id = @home_team_id AND DATEPART(dd,permit_date) = DATEPART(dd,p.permit_date) AND DATEPART(mm,permit_date) = DATEPART(mm,p.permit_date))
+					--Make sure the team hasn't requested an off day on this day
+					AND NOT EXISTS (SELECT team_id FROM team_off_day WHERE team_id = @home_team_id AND DATEPART(dd,off_day) = DATEPART(dd,p.permit_date) AND DATEPART(mm,off_day) = DATEPART(mm,p.permit_date))
 				GROUP BY
 					p.permit_id
 					,p.permit_date
@@ -110,6 +112,8 @@ BEGIN
 						AND p.league_id = @league_id
 						--Make sure the team doesn't already have a permit on this day
 						AND NOT EXISTS (SELECT home_team_id FROM stg_permit WHERE stg_id = @stg_id AND league_id = @league_id AND home_team_id = @home_team_id AND DATEPART(dd,permit_date) = DATEPART(dd,p.permit_date) AND DATEPART(mm,permit_date) = DATEPART(mm,p.permit_date))
+						--Make sure the team hasn't requested an off day on this day
+						AND NOT EXISTS (SELECT team_id FROM team_off_day WHERE team_id = @home_team_id AND DATEPART(dd,off_day) = DATEPART(dd,p.permit_date) AND DATEPART(mm,off_day) = DATEPART(mm,p.permit_date))
 					GROUP BY
 						p.permit_id
 						,p.permit_date
@@ -190,6 +194,8 @@ BEGIN
 					AND p.permit_id = @permit_id
 					--Make sure the team doesn't already have a permit on this day
 					AND NOT EXISTS (SELECT home_team_id FROM stg_permit WHERE stg_id = @stg_id AND league_id = @league_id AND home_team_id = h.team_id AND DATEPART(dd,permit_date) = DATEPART(dd,p.permit_date) AND DATEPART(mm,permit_date) = DATEPART(mm,p.permit_date))
+					--Make sure the team hasn't requested an off day on this day
+					AND NOT EXISTS (SELECT team_id FROM team_off_day WHERE team_id = h.team_id AND DATEPART(dd,off_day) = DATEPART(dd,p.permit_date) AND DATEPART(mm,off_day) = DATEPART(mm,p.permit_date))
 				GROUP BY 
 					p.permit_id
 					,h.team_id

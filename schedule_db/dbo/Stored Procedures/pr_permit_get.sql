@@ -8,6 +8,8 @@ BEGIN
 		,permit_date = CONVERT(VARCHAR(10),p.permit_date,101)
 		,permit_time = 
 				CASE 
+					WHEN DATEPART(HH,p.permit_date) = 0
+					THEN '12'
 					WHEN DATEPART(HH,p.permit_date) > 12 
 					THEN CONVERT(VARCHAR(2),DATEPART(HH,p.permit_date)-12)
 					ELSE CONVERT(VARCHAR(2),DATEPART(HH,p.permit_date))
@@ -18,7 +20,7 @@ BEGIN
 					THEN '00'
 					ELSE CONVERT(VARCHAR(2),DATEPART(MINUTE,p.permit_date))
 				END
-		,permit_ampm = CASE WHEN DATEPART(HH,p.permit_date) > 12 THEN 'PM' ELSE 'AM' END
+		,permit_ampm = CASE WHEN DATEPART(HH,p.permit_date) >= 12 THEN 'PM' ELSE 'AM' END
 		,t.team_id
 		,t.team_name
 	FROM 

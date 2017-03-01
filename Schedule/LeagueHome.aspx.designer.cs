@@ -85,6 +85,15 @@ namespace Schedule {
         protected global::System.Web.UI.WebControls.Button btn_manageSchedule;
         
         /// <summary>
+        /// btn_manageFixedMatchups control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_manageFixedMatchups;
+        
+        /// <summary>
         /// lbl_numberTeams control.
         /// </summary>
         /// <remarks>

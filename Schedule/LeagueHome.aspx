@@ -52,6 +52,10 @@ function confirmDelete()
                 <td style="width:20px"></td>
                 <td><asp:Button style="width:200px" ID="btn_manageSchedule" runat="server" Text="Manage Schedule" Font-Size="Smaller" OnClick="btn_manageSchedule_Click" /></td>
             </tr>
+            <tr>
+                <td colspan="8"></td>
+                 <td><asp:Button style="width:200px" ID="btn_manageFixedMatchups" runat="server" Text="Manage Fixed Matchups" Font-Size="Smaller" OnClick="btn_manageFixedMatchups_Click" /></td>
+            </tr>
         </table>
         <br />
         <table>
@@ -161,7 +165,7 @@ function confirmDelete()
                 </td>
                 <td style="width:20px">&nbsp;</td>
                 <td valign="top" class="auto-style2">
-                    <asp:GridView ID="grd_Conference" runat="server" AutoGenerateColumns="False" CellPadding="3" DataSourceID="SqlDataSource_Conference" Width="320px">
+                    <asp:GridView ID="grd_Conference" runat="server" AutoGenerateColumns="False" CellPadding="3" DataSourceID="SqlDataSource_Conference" Width="360px">
                         <Columns>
                             <asp:BoundField DataField="conference_id" HeaderText="conference_id" SortExpression="conference_id" Visible="False" />
                             <asp:BoundField DataField="conference_name" HeaderText="Conference" SortExpression="conference_name">
@@ -171,16 +175,16 @@ function confirmDelete()
                             <ItemStyle Width="200px" />
                             </asp:BoundField>
                             <asp:ButtonField ButtonType="Button" Text="Edit">
-                            <ControlStyle Width="60px" />
-                            <FooterStyle Width="60px" />
-                            <HeaderStyle Width="60px" />
-                            <ItemStyle Width="60px" />
+                            <ControlStyle Width="80px" />
+                            <FooterStyle Width="80px" />
+                            <HeaderStyle Width="80px" />
+                            <ItemStyle Width="80px" />
                             </asp:ButtonField>
                             <asp:ButtonField ButtonType="Button" Text="Delete">
-                            <ControlStyle Width="60px" />
-                            <FooterStyle Width="60px" />
-                            <HeaderStyle Width="60px" />
-                            <ItemStyle Width="60px" />
+                            <ControlStyle Width="80px" />
+                            <FooterStyle Width="80px" />
+                            <HeaderStyle Width="80px" />
+                            <ItemStyle Width="80px" />
                             </asp:ButtonField>
                         </Columns>
                     </asp:GridView>
@@ -227,7 +231,7 @@ function confirmDelete()
                             </asp:ButtonField>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:Button ID="btn_delete" runat="server" Text="Delete" CommandName="Del" OnClientClick="return confirmDelete();" CommandArgument='<%# Container.DataItemIndex %>' Width="80" />
+                                    <asp:Button ID="btn_delete" runat="server" Text="Delete" CommandName="Del" OnClientClick="return confirmDelete();" CommandArgument='<%# Container.DataItemIndex %>' Width="80" VerticalAlign="Center"/>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

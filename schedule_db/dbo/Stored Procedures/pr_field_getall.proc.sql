@@ -23,4 +23,5 @@ BEGIN
 			,''
 			,''
 		WHERE @include_unknown = 1
+		ORDER BY field_name
 END

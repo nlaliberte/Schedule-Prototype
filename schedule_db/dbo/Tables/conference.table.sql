@@ -1,8 +1,11 @@
-﻿CREATE TABLE [dbo].[conference] (
-    [league_id]       INT           NOT NULL,
-    [conference_id]   INT           NOT NULL,
-    [conference_name] VARCHAR (255) NOT NULL,
-    CONSTRAINT [pk_conference] PRIMARY KEY CLUSTERED ([league_id] ASC, [conference_id] ASC),
-    CONSTRAINT [unq_conference_name] UNIQUE NONCLUSTERED ([league_id] ASC, [conference_name] ASC)
+﻿CREATE TABLE [dbo].[fixed_matchup] (
+    [fixed_matchup_id] INT      IDENTITY (1, 1) NOT NULL,
+    [league_id]        INT      NOT NULL,
+    [home_team_id]     INT      NOT NULL,
+    [away_team_id]     INT      NOT NULL,
+    [field_id]         INT      NULL,
+    [matchup_date]     DATETIME NULL
 );
+
+
 

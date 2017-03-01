@@ -13,8 +13,9 @@ BEGIN
 	
 	DECLARE @permit_datetime DATETIME
 	SELECT @permit_datetime = 
-		CASE @am_pm
-			WHEN 'AM' THEN CONVERT(DATETIME,@permit_date + ' ' + @permit_time)
+		CASE 
+			WHEN @permit_time = '12:00' AND @am_pm = 'AM' THEN DATEADD(hh,-12,CONVERT(DATETIME,@permit_date + ' ' + @permit_time))
+			WHEN @am_pm = 'AM' OR @permit_time = '12:00' THEN CONVERT(DATETIME,@permit_date + ' ' + @permit_time)
 			ELSE DATEADD(hh,12,CONVERT(DATETIME,@permit_date + ' ' + @permit_time))
 		END
 		

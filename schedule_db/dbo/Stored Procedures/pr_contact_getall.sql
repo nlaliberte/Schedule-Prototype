@@ -10,5 +10,8 @@ BEGIN
 		,phone
 	FROM dbo.contact
 	WHERE league_id = @league_id
+	ORDER BY 
+		last_name
+		,first_name
 
 END
