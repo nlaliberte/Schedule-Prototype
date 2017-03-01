@@ -41,6 +41,8 @@ namespace Schedule
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
 
                 grd_contact.DataBind();
+
+                Session["ContactID"] = "-1";
             }
         }
     }

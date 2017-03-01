@@ -38,8 +38,10 @@ function confirmDelete()
     
         <table>
             <tr>
-                <td><asp:Label ID="lbl_leagueName" runat="server" Text="(League Name)" Font-Bold="True" Font-Size="Large"></asp:Label></td>
-                <td style="width:20px"></td>
+                <td colspan="9"><asp:Label ID="lbl_leagueName" runat="server" Text="(League Name)" Font-Bold="True" Font-Size="Large"></asp:Label></td>
+            </tr>
+            <tr style="height:3px"><td style="height:3px"></td></tr>
+            <tr>
                 <td><asp:Button style="width:200px" ID="btn_editLeague" runat="server" Text="Edit League" Font-Size="Smaller" OnClick="btn_editLeague_Click" /></td>
                 <td style="width:20px"></td>
                 <td><asp:Button style="width:200px" ID="btn_manageContacts" runat="server" Text="Manage Fields" Font-Size="Smaller" OnClick="btn_manageFields_Click" /></td>
