@@ -120,7 +120,7 @@ namespace Schedule
 
         protected void btn_manageFixedMatchups_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("ManageFixedMatchup.aspx");
         }
 
 
