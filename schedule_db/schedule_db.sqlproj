@@ -66,7 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\team.table.sql" />
-    <Build Include="dbo\Tables\conference.table.sql" />
+    <Build Include="dbo\Tables\fixed_matchup.table.sql" />
     <Build Include="dbo\Tables\field.table.sql" />
     <Build Include="dbo\Tables\permit.table.sql" />
     <Build Include="dbo\Tables\stg_permit.table.sql" />
@@ -131,7 +131,7 @@
     <Build Include="dbo\Stored Procedures\pr_field_insert.sql" />
     <Build Include="dbo\Stored Procedures\pr_field_get.sql" />
     <Build Include="dbo\Stored Procedures\pr_field_delete.sql" />
-    <Build Include="dbo\Tables\conference.sql" />
+    <Build Include="dbo\Tables\conference.table.sql" />
     <Build Include="dbo\Stored Procedures\pr_fixed_matchup_update.sql" />
     <Build Include="dbo\Stored Procedures\pr_fixed_matchup_insert.sql" />
     <Build Include="dbo\Stored Procedures\pr_fixed_matchup_getall.sql" />
