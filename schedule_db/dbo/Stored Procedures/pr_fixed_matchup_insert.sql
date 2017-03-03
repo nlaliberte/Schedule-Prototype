@@ -20,7 +20,7 @@ BEGIN
 		END
 
 	DECLARE @permit_id INT = -1
-	
+
 	--If we have a field_id we need to check and see if there's a permit and create one if there isn't, else we'll insert the -1
 	IF @field_id <> -1
 	BEGIN
@@ -38,12 +38,14 @@ BEGIN
 		BEGIN
 			IF EXISTS (SELECT permit_id FROM dbo.permit WHERE home_team_id = @home_team_id AND field_id <> @field_id AND DATEPART(DAY,permit_date) = DATEPART(DAY,@matchup_datetime) AND DATEPART(MONTH,permit_date) = DATEPART(MONTH,@matchup_datetime))
 			BEGIN
-				RAISERROR ('The home team has a permit at a different field on the same day',10, 1) 
+				RAISERROR ('The home team has a permit at a different field on the same day',18, 1) 
+				RETURN
 			END
 
-			IF EXISTS (SELECT permit_id FROM dbo.permit WHERE home_team_id = @home_team_id AND field_id <> @field_id AND DATEPART(DAY,permit_date) = DATEPART(DAY,@matchup_datetime) AND DATEPART(MONTH,permit_date) = DATEPART(MONTH,@matchup_datetime))
+			IF EXISTS (SELECT permit_id FROM dbo.permit WHERE home_team_id = @away_team_id AND DATEPART(DAY,permit_date) = DATEPART(DAY,@matchup_datetime) AND DATEPART(MONTH,permit_date) = DATEPART(MONTH,@matchup_datetime))
 			BEGIN
-				RAISERROR ('The away team has a permit at a different field on the same day',10, 1) 
+				RAISERROR ('The away team has a permit at a different field on the same day',18, 1) 
+				RETURN
 			END
 
 			--Create a new permit
@@ -56,7 +58,20 @@ BEGIN
 				home_team_id = @home_team_id
 				AND field_id = @field_id
 				AND permit_date = @matchup_datetime
+
 		END
+
+		--Still check to make sure the away team doesn't have a permit on this day even if a field isnt' selected
+		IF 
+			(
+				@matchup_date IS NOT NULL 
+				AND @matchup_time IS NOT NULL 
+				AND EXISTS (SELECT permit_id FROM dbo.permit WHERE home_team_id = @away_team_id AND DATEPART(DAY,permit_date) = DATEPART(DAY,@matchup_datetime) AND DATEPART(MONTH,permit_date) = DATEPART(MONTH,@matchup_datetime))
+			)
+		BEGIN
+			RAISERROR ('The away team has a permit at a different field on the same day',18, 1) 
+		END
+
 	END
 
 

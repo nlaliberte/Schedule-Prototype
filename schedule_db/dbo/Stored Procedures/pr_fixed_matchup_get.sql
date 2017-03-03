@@ -3,7 +3,8 @@ AS
 BEGIN
 	
 	SELECT
-		fm.home_team_id 
+		fm.permit_id
+		,fm.home_team_id 
 		,fm.away_team_id
 		,p.field_id
 		,matchup_date = CONVERT(VARCHAR(10),p.permit_date,101)
