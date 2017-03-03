@@ -101,7 +101,9 @@ namespace Schedule.Library
                 }
             }
 
-            page.Response.End();
+            page.Response.Flush();
+            page.Response.SuppressContent = true;
+            HttpContext.Current.ApplicationInstance.CompleteRequest();
 
             return;
         }

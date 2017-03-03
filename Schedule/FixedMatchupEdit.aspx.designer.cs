@@ -49,6 +49,24 @@ namespace Schedule {
         protected global::System.Web.UI.WebControls.DropDownList dd_awayTeam;
         
         /// <summary>
+        /// dd_field control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dd_field;
+        
+        /// <summary>
+        /// SqlDataSource_Field control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_Field;
+        
+        /// <summary>
         /// txt_date control.
         /// </summary>
         /// <remarks>
@@ -76,24 +94,6 @@ namespace Schedule {
         protected global::System.Web.UI.WebControls.DropDownList dd_ampm;
         
         /// <summary>
-        /// dd_field control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dd_field;
-        
-        /// <summary>
-        /// SqlDataSource_Field control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_Field;
-        
-        /// <summary>
         /// btn_cancel control.
         /// </summary>
         /// <remarks>
@@ -110,5 +110,14 @@ namespace Schedule {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_save;
+        
+        /// <summary>
+        /// lbl_note control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_note;
     }
 }

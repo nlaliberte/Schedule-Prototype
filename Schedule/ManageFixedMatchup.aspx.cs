@@ -16,6 +16,7 @@ namespace Schedule
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["fixedMatchupID"] = "-1";
+            nullFixedMatchupWarning();
         }
 
         protected void grd_fixedMatchup_RowCommand(Object sender, GridViewCommandEventArgs e)
@@ -37,12 +38,30 @@ namespace Schedule
                 query = "EXEC dbo.pr_fixed_matchup_delete " + fixedMatchupID;
                 bool result = SQLHelper.Exec_SQLNonQuery(query);
 
-                string script = "alert(\"The Fixed Matchup between " + homeTeam + " and " + awayTeam + " has been Removed.\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                WarningHelper.Warning_Notification("The Fixed Matchup between " + homeTeam + " and " + awayTeam + " has been Removed.", this);
 
                 grd_fixedMatchup.DataBind();
 
+                nullFixedMatchupWarning();
+
                 Session["fixedMatchupID"] = "-1";
+            }
+        }
+
+        protected void nullFixedMatchupWarning()
+        {
+            string query = "SELECT COUNT(1) FROM dbo.fixed_matchup WHERE league_id = " + (string)Session["leagueID"];
+            int count = SQLHelper.Exec_SQLScalarInt(query);
+
+            if (count == 0)
+            {
+                grd_fixedMatchup.Visible = false;
+                lbl_noMatchupWarning.Visible = true;
+            }
+            else
+            {
+                grd_fixedMatchup.Visible = true;
+                lbl_noMatchupWarning.Visible = false;
             }
         }
     }

@@ -21,6 +21,7 @@ namespace Schedule
             if (!Page.IsPostBack)
             {
                 Session["teamID"] = "-1";
+                Session["exportCount"] = 1;
 
                 query = "EXEC dbo.pr_league_get " + leagueID;
                 DataTable leagueSource = SQLHelper.Exec_SQLReaderDataTable(query);
@@ -77,7 +78,10 @@ namespace Schedule
                 bool result = SQLHelper.Exec_SQLNonQuery(query);
 
                 string script = "alert(\"" + team_name + "has been Removed.\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+
+                WarningHelper.Warning_Notification(script, this);
+
+                //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
 
                 grd_team.DataBind();
             }

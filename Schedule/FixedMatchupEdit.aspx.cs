@@ -32,6 +32,7 @@ namespace Schedule
                         txt_time.Text = row["matchup_time"].ToString();
                         dd_ampm.SelectedValue = row["matchup_ampm"].ToString();
                         dd_field.SelectedValue = row["field_id"].ToString();
+                        Session["permitID"] = row["permit_id"].ToString();
                     }
                 }
                 else
@@ -44,6 +45,7 @@ namespace Schedule
 
         protected void btn_cancel_Click(object sender, EventArgs e)
         {
+            Session["permitID"] = "-1";
             Response.Redirect("ManageFixedMatchup.aspx");
         }
 
@@ -56,36 +58,43 @@ namespace Schedule
 
             string matchupDate = txt_date.Text;
             string matchupTime = txt_time.Text;
-            bool valid = WarningHelper.val_DateTime(matchupDate, matchupTime);
-            if (valid == false)
-            {
-                warning = "alert(\"Please enter a valid Date (mm/dd/yyyy) and Time (hh:mm).\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", warning, true);
+            string fieldID = dd_field.SelectedValue;
+            bool valid;
 
-                txt_date.BackColor = System.Drawing.Color.LightPink;
-                txt_time.BackColor = System.Drawing.Color.LightPink;
-                return;
+            if(fieldID != "-1")
+            { 
+                valid = WarningHelper.val_DateTime(matchupDate, matchupTime);
+                if (valid == false)
+                {
+                    warning = "alert(\"Please enter a valid Date (mm/dd/yyyy) and Time (hh:mm).\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", warning, true);
+
+                    txt_date.BackColor = System.Drawing.Color.LightPink;
+                    txt_time.BackColor = System.Drawing.Color.LightPink;
+                    return;
+                }
             }
 
             if (fixedMatchupID != "-1")
             {
-                query = "EXEC dbo.pr_fixed_matchup_update " + fixedMatchupID + ", " + dd_homeTeam.SelectedValue + ", " + dd_awayTeam.SelectedValue + ", " + dd_field.SelectedValue + ", '" + matchupDate + "', '" + matchupTime + "', '" + dd_ampm.SelectedValue + "'";
+                query = "EXEC dbo.pr_fixed_matchup_update " + fixedMatchupID + ", " + (string)Session["leagueID"] +  ", " + (string)Session["permitID"] + ", " + dd_homeTeam.SelectedValue + ", " + dd_awayTeam.SelectedValue + ", " + fieldID + ", '" + matchupDate + "', '" + matchupTime + "', '" + dd_ampm.SelectedValue + "'";
                 result = SQLHelper.Exec_SQLNonQuery(query);
             }
             else
             {
-                query = "EXEC dbo.pr_fixed_matchup_insert " + (string)Session["leagueID"] + ", " + dd_homeTeam.SelectedValue +", " + dd_awayTeam.SelectedValue + ", " + dd_field.SelectedValue + ", '" + txt_date.Text + "', '" + txt_time.Text + "', '" + dd_ampm.SelectedValue + "'";
+                query = "EXEC dbo.pr_fixed_matchup_insert " + (string)Session["leagueID"] + ", " + dd_homeTeam.SelectedValue +", " + dd_awayTeam.SelectedValue + ", " + fieldID + ", '" + txt_date.Text + "', '" + txt_time.Text + "', '" + dd_ampm.SelectedValue + "'";
                 result = SQLHelper.Exec_SQLNonQuery(query);
             }
 
             if (!result)
             {
-                warning = "alert(\"Was not able to Insert/Update the Fixed Matchup. Is it possible a Matchup for these values already exists?\");";
+                warning = "alert(\"Was not able to Insert/Update the Fixed Matchup. This Fixed Matchup could already exist, or one of the teams may already have an other permit for this day.\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", warning, true);
                 return;
             }
             else
             {
+                Session["permitID"] = "-1";
                 Response.Redirect("ManageFixedMatchup.aspx");
             }
         }

@@ -91,7 +91,7 @@ namespace Schedule
                 grd_scheduleChosen.DataBind();
                 grd_schedule.DataBind();
 
-                lbl_stgID.Text = "Schedule ID: " + stgID + " (Currently Selected)";
+                lbl_stgID.Text = "Schedule ID: " + stgID;
                 grd_scheduleByTeam.DataBind();
 
                 nullScheduleWarnings(stgID);
@@ -202,9 +202,21 @@ namespace Schedule
 
                 Page page = (Page)HttpContext.Current.Handler;
 
-                string filename = "Schedule_" + stgID;
+                string filename;
+                int exportCount = (int)Session["exportCount"];
+
+                if (exportCount == 1)
+                {
+                    filename = "Schedule";
+                }
+                else
+                {
+                    filename = "Schedule(" + exportCount + ")";
+                }                
 
                 SQLHelper.Exec_SQLExcelExport(dt, page, filename);
+
+                Session["exportCount"] = exportCount + 1;
                 
             }
 

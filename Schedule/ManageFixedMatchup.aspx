@@ -79,6 +79,7 @@
                 <asp:SessionParameter Name="league_id" SessionField="leagueID" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
+        <asp:Label ID="lbl_noMatchupWarning" runat="server" Text="NOTE: No Fixed Matchups have been Saved." Font-Italic="True" ForeColor="Red"></asp:Label>
     </div>
     </form>
 </body>

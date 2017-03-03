@@ -13,11 +13,11 @@ namespace Schedule.Library
 {
     public static class WarningHelper
     {
-        //public static void Warning_Notification(string message, System.Web.UI.Page page)
-        //{
-        //    string script = "alert(\"" + message + "\");";
-        //    ScriptManager.RegisterStartupScript(page, GetType(), "ServerControlScript", script, true);
-        //}
+        public static void Warning_Notification(string message, System.Web.UI.Page page)
+        {
+            string script = "alert(\"" + message + "\");";
+            ScriptManager.RegisterStartupScript(page, page.GetType(), "ServerControlScript", script, true);
+        }
 
 
         public static bool val_DateTime(string date, string time)
