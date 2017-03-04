@@ -81,8 +81,6 @@ namespace Schedule
 
                 WarningHelper.Warning_Notification(script, this);
 
-                //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-
                 grd_team.DataBind();
             }
         }
