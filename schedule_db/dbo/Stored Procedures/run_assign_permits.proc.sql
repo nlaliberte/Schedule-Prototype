@@ -24,8 +24,9 @@ BEGIN
 		SET permit_id = fm.permit_id
 		FROM
 			dbo.stg_matchup sm
-			INNER JOIN dbo.fixed_matchup fm ON sm.home_team_id = fm.away_team_id
-				AND fm.fixed_matchup_id = @loop_id
+			INNER JOIN dbo.fixed_matchup fm ON sm.home_team_id = fm.home_team_id
+				AND sm.away_team_id = fm.away_team_id
+				AND fm.fixed_matchup_id = 1
 				AND fm.permit_id <> -1
 			INNER JOIN 
 				(
@@ -35,15 +36,15 @@ BEGIN
 						,matchup_id = MIN(matchup_id)
 					FROM dbo.stg_matchup
 					WHERE 
-						league_id = @league_id
-						AND stg_id = @stg_id
+						league_id = 1
+						AND stg_id = 1
 						AND permit_id = -1
 					GROUP BY
 						home_team_id
 						,away_team_id
 				) m ON fm.home_team_id = m.home_team_id
 					AND fm.away_team_id = m.away_team_id
-					AND sm.matchup_id = m.matchup_id			
+					AND sm.matchup_id = m.matchup_id
 			
 		SELECT @loop_id = @loop_id + 1
 	END
