@@ -148,15 +148,28 @@ namespace Schedule
             {
                 txt_numSchedule.BackColor = System.Drawing.Color.White;
 
-                query = "EXEC dbo.run_schedule_stg " + leagueID + ", " + numSchedule + ", 0";
-                bool result = SQLHelper.Exec_SQLNonQuery(query);
+                int num = Convert.ToInt32(txt_numSchedule.Text);
+                int stg = 1;
 
+                while (stg <= num)
+                {
+                    query = "EXEC dbo.run_schedule_stg " + leagueID;
+                    bool result = SQLHelper.Exec_SQLNonQuery(query);
+                        
+                  
+                    stg++;      
+                }
+                
                 WarningHelper.Warning_Notification(numSchedule + " Schedule(s) Created!", this);
-
-                grd_schedule.DataBind();
+                                
             }
-
+            
+            grd_schedule.DataBind();
             nullScheduleWarnings(stgID);
+
+            Session["leagueID"] = leagueID;
+            Session["stgID"] = stgID;
+            
         }
 
         protected void ddl_team_SelectedIndexChanged(object sender, EventArgs e)
