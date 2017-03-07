@@ -13,8 +13,8 @@ AS
 BEGIN
 	--So now we have all the matchups and we need to assign permits to them.  To minimize orphaned matchups, we will constantly evaluate which matchups have available dates left
 	--We will do this in a loop but first assign the fixed matchups, also in a loop
-	DECLARE @loop_id		INT = (SELECT MIN(fixed_matchup_id) FROM fixed_matchup WHERE league_id = @league_id)
-	DECLARE @max_loop_id	INT = (SELECT MAX(fixed_matchup_id) FROM fixed_matchup WHERE league_id = @league_id)
+	DECLARE @loop_id		INT = ISNULL((SELECT MIN(fixed_matchup_id) FROM fixed_matchup WHERE league_id = @league_id),0)
+	DECLARE @max_loop_id	INT = ISNULL((SELECT MAX(fixed_matchup_id) FROM fixed_matchup WHERE league_id = @league_id),-1)
 	DECLARE @matchup_id		INT
 		
 	WHILE @loop_id <= @max_loop_id
@@ -26,7 +26,7 @@ BEGIN
 			dbo.stg_matchup sm
 			INNER JOIN dbo.fixed_matchup fm ON sm.home_team_id = fm.home_team_id
 				AND sm.away_team_id = fm.away_team_id
-				AND fm.fixed_matchup_id = 1
+				AND fm.fixed_matchup_id = @loop_id
 				AND fm.permit_id <> -1
 			INNER JOIN 
 				(
@@ -36,8 +36,8 @@ BEGIN
 						,matchup_id = MIN(matchup_id)
 					FROM dbo.stg_matchup
 					WHERE 
-						league_id = 1
-						AND stg_id = 1
+						league_id = @league_id
+						AND stg_id = @stg_id
 						AND permit_id = -1
 					GROUP BY
 						home_team_id
@@ -52,9 +52,9 @@ BEGIN
 	SELECT @loop_id = (SELECT MIN(matchup_id) FROM stg_matchup WHERE stg_id = @stg_id AND league_id = @league_id)
 	SELECT @max_loop_id	= (SELECT MAX(matchup_id) FROM stg_matchup WHERE stg_id = @stg_id AND league_id = @league_id)
 	SELECT @matchup_id = -1
+
 	WHILE @loop_id <= @max_loop_id
 	BEGIN
-
 		SELECT @matchup_id = 
 		(
 			SELECT TOP 1 m.matchup_id
@@ -78,13 +78,13 @@ BEGIN
 						AND NOT EXISTS (SELECT team_id FROM team_off_day WHERE m.away_team_id = team_id AND MONTH(p.permit_date) = MONTH(off_day) AND DAY(p.permit_date) = DAY(off_day))
 				)
 				,newid()
-		)
-
+		)	
+		
 		--If No Matchups are left that can be scheduled, Break the loop
 		IF @matchup_id IS NULL
+		BEGIN
 			BREAK
-		ELSE
-			CONTINUE
+		END
 
 		--Give the matchup a fitting permit
 		UPDATE stg_matchup
@@ -116,7 +116,7 @@ BEGIN
 				 ,newid()
 		),-2)
 		WHERE matchup_id = @matchup_id
-
+		
 		--Clear the @matchup_id
 		SELECT @matchup_id = NULL
 
