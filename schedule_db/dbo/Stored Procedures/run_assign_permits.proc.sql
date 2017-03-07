@@ -12,10 +12,45 @@ CREATE PROCEDURE [dbo].[run_assign_permits]
 AS
 BEGIN
 	--So now we have all the matchups and we need to assign permits to them.  To minimize orphaned matchups, we will constantly evaluate which matchups have available dates left
-	--We will do this in a loop
-	DECLARE @loop_id		INT = (SELECT MIN(matchup_id) FROM stg_matchup WHERE stg_id = @stg_id AND league_id = @league_id)
-	DECLARE @max_loop_id	INT = (SELECT MAX(matchup_id) FROM stg_matchup WHERE stg_id = @stg_id AND league_id = @league_id)
+	--We will do this in a loop but first assign the fixed matchups, also in a loop
+	DECLARE @loop_id		INT = (SELECT MIN(fixed_matchup_id) FROM fixed_matchup WHERE league_id = @league_id)
+	DECLARE @max_loop_id	INT = (SELECT MAX(fixed_matchup_id) FROM fixed_matchup WHERE league_id = @league_id)
 	DECLARE @matchup_id		INT
+		
+	WHILE @loop_id <= @max_loop_id
+	BEGIN
+	
+		UPDATE sm
+		SET permit_id = fm.permit_id
+		FROM
+			dbo.stg_matchup sm
+			INNER JOIN dbo.fixed_matchup fm ON sm.home_team_id = fm.away_team_id
+				AND fm.fixed_matchup_id = @loop_id
+				AND fm.permit_id <> -1
+			INNER JOIN 
+				(
+					SELECT 
+						home_team_id
+						,away_team_id
+						,matchup_id = MIN(matchup_id)
+					FROM dbo.stg_matchup
+					WHERE 
+						league_id = @league_id
+						AND stg_id = @stg_id
+						AND permit_id = -1
+					GROUP BY
+						home_team_id
+						,away_team_id
+				) m ON fm.home_team_id = m.home_team_id
+					AND fm.away_team_id = m.away_team_id
+					AND sm.matchup_id = m.matchup_id			
+			
+		SELECT @loop_id = @loop_id + 1
+	END
+	
+	SELECT @loop_id = (SELECT MIN(matchup_id) FROM stg_matchup WHERE stg_id = @stg_id AND league_id = @league_id)
+	SELECT @max_loop_id	= (SELECT MAX(matchup_id) FROM stg_matchup WHERE stg_id = @stg_id AND league_id = @league_id)
+	SELECT @matchup_id = -1
 	WHILE @loop_id <= @max_loop_id
 	BEGIN
 
