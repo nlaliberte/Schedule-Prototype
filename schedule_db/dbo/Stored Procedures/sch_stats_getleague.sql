@@ -84,7 +84,7 @@ BEGIN
 						,matchups = COUNT(1)
 					FROM stg_matchup
 					WHERE 
-						permit_id = -1
+						permit_id < 0
 						AND league_id = @league_id
 					GROUP BY 
 						stg_id
