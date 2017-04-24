@@ -47,8 +47,7 @@ BEGIN
 		--If No Matchups are left that can be scheduled, Break the loop
 		IF @matchup_id IS NULL
 			BREAK
-		ELSE
-			CONTINUE
+
 
 		--Give the matchup a fitting permit
 		UPDATE stg_matchup
