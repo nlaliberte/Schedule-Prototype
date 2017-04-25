@@ -227,15 +227,11 @@ namespace Schedule
 
             if (permitCount == 0)
             {
-                string script = "alert(\"No Permits to Add\");";
-                ScriptManager.RegisterStartupScript(this, GetType(),
-                                      "ServerControlScript", script, true);
+                WarningHelper.Warning_Notification("No Permits to Add.",this);
             }
             else
             {
-                string script = "alert(\"Permits"+ permitCount.ToString()+ "Added!\");";
-                ScriptManager.RegisterStartupScript(this, GetType(),
-                                      "ServerControlScript", script, true);
+                WarningHelper.Warning_Notification(permitCount.ToString() + " Permits Added!", this);
             }
         }
 

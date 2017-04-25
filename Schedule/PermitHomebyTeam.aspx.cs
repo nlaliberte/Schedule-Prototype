@@ -79,8 +79,7 @@ namespace Schedule
                 query = "EXEC dbo.pr_permit_delete " + permitID;
                 bool result = SQLHelper.Exec_SQLNonQuery(query);
 
-                string script = "alert(\"The permit for " + fieldName + " on " + date + " has been Removed.\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                WarningHelper.Warning_Notification("The permit for " + fieldName + " on " + date + " has been Removed.", this);
             }
         }
     }

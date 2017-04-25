@@ -37,8 +37,7 @@ namespace Schedule
                 query = "EXEC dbo.pr_contact_delete " + contactID;
                 bool result = SQLHelper.Exec_SQLNonQuery(query);
 
-                string script = "alert(\"" + contactFirstName + " " + contactLastName + " has been Removed.\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                WarningHelper.Warning_Notification(contactFirstName + " " + contactLastName + " has been Removed.", this);
 
                 grd_contact.DataBind();
 

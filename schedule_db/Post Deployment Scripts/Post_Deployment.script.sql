@@ -4,5 +4,6 @@ EXEC dbo.deploy_seed_contact
 EXEC dbo.deploy_seed_field
 EXEC dbo.deploy_seed_home_field
 EXEC dbo.deploy_seed_league
-EXEC dbo.deploy_seed_permit 1
+EXEC dbo.deploy_seed_permit 
 EXEC dbo.deploy_seed_team
+EXEC dbp.deploy_seed_team_day_off

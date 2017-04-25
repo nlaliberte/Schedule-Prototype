@@ -110,8 +110,7 @@ namespace Schedule
                 query = "EXEC dbo.sch_stg_delete " + leagueID + ", " + stgID;
                 bool result = SQLHelper.Exec_SQLNonQuery(query);
 
-                string script = "alert(\"Potential Schedule ID: " + stgID + " has been Removed.\");";
-                ScriptManager.RegisterStartupScript(this, GetType(),"ServerControlScript", script, true);
+                WarningHelper.Warning_Notification("Potential Schedule ID: " + stgID + " has been Removed.", this);
 
                 grd_schedule.DataBind();
 
@@ -143,25 +142,34 @@ namespace Schedule
             {
                 txt_numSchedule.BackColor = System.Drawing.Color.LightPink;
 
-                //message = "Please enter a valid number between 1 and 10.";
-                //WarningHelper.Warning_Notification(message, page);
-                string script = "alert(\"Please enter a valid number between 1 and 10\");";
-                ScriptManager.RegisterStartupScript(this, GetType(),"ServerControlScript", script, true);
+                WarningHelper.Warning_Notification("Please enter a valid number between 1 and 10.", this);
             }
             else
             {
                 txt_numSchedule.BackColor = System.Drawing.Color.White;
 
-                query = "EXEC dbo.run_schedule_stg " + leagueID + ", " + numSchedule + ", 0";
-                bool result = SQLHelper.Exec_SQLNonQuery(query);
+                int num = Convert.ToInt32(txt_numSchedule.Text);
+                int stg = 1;
 
-                string script = "alert(\"" + numSchedule + " Schedule(s) Created!\");";
-                ScriptManager.RegisterStartupScript(this, GetType(),"ServerControlScript", script, true);
-
-                grd_schedule.DataBind();
+                while (stg <= num)
+                {
+                    query = "EXEC dbo.run_schedule_stg " + leagueID;
+                    bool result = SQLHelper.Exec_SQLNonQuery(query);
+                        
+                  
+                    stg++;      
+                }
+                
+                WarningHelper.Warning_Notification(numSchedule + " Schedule(s) Created!", this);
+                                
             }
-
+            
+            grd_schedule.DataBind();
             nullScheduleWarnings(stgID);
+
+            Session["leagueID"] = leagueID;
+            Session["stgID"] = stgID;
+            
         }
 
         protected void ddl_team_SelectedIndexChanged(object sender, EventArgs e)

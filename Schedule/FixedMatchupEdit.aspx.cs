@@ -66,8 +66,7 @@ namespace Schedule
                 valid = WarningHelper.val_DateTime(matchupDate, matchupTime);
                 if (valid == false)
                 {
-                    warning = "alert(\"Please enter a valid Date (mm/dd/yyyy) and Time (hh:mm).\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", warning, true);
+                    WarningHelper.Warning_Notification("Please enter a valid Date (mm/dd/yyyy) and Time (hh:mm).", this);
 
                     txt_date.BackColor = System.Drawing.Color.LightPink;
                     txt_time.BackColor = System.Drawing.Color.LightPink;
@@ -88,8 +87,8 @@ namespace Schedule
 
             if (!result)
             {
-                warning = "alert(\"Was not able to Insert/Update the Fixed Matchup. This Fixed Matchup could already exist, or one of the teams may already have an other permit for this day.\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", warning, true);
+                WarningHelper.Warning_Notification("Was not able to Insert/Update the Fixed Matchup. This Fixed Matchup could already exist, or one of the teams may already have an other permit for this day.", this);
+                
                 return;
             }
             else

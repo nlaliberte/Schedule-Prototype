@@ -79,16 +79,14 @@ namespace Schedule
                 query = "SELECT CONVERT(VARCHAR(3),MAX(team_id) + 1) FROM dbo.team WHERE team_name = '" + teamName + "'";
                 teamID = SQLHelper.Exec_SQLScalarString(query);
 
-                string script = "alert(\"" + teamName + " has been Added!\");";
-                ScriptManager.RegisterStartupScript(this, GetType(),"ServerControlScript", script, true);
+                WarningHelper.Warning_Notification(teamName + " has been Added!", this);
             }
             else
             {
                 query = "EXEC dbo.pr_team_update " + teamID + ", '" + teamName + "', " + conferenceID + ", " + primaryContactID + ", " + secondaryContactID;
                 result = SQLHelper.Exec_SQLNonQuery(query);
 
-                string script = "alert(\"Team Updated!\");";
-                ScriptManager.RegisterStartupScript(this, GetType(),"ServerControlScript", script, true);
+                WarningHelper.Warning_Notification("Team Updated!", this);
             }
 
             Session["teamID"] = teamID;

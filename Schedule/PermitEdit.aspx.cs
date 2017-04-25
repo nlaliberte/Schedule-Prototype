@@ -56,13 +56,11 @@ namespace Schedule
             string permitDate = txt_date.Text;
             string permitTime = txt_time.Text;
             string permitAMPM = dd_ampm.SelectedValue;
-            string warning;
 
             bool valid = WarningHelper.val_DateTime(permitDate, permitTime);
             if (valid == false)
             {
-                warning = "alert(\"Please enter a valid Date (mm/dd/yyyy) and Time (hh:mm).\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", warning, true);
+                WarningHelper.Warning_Notification("Please enter a valid Date (mm/dd/yyyy) and Time (hh:mm).", this);
 
                 txt_date.BackColor = System.Drawing.Color.LightPink;
                 txt_time.BackColor = System.Drawing.Color.LightPink;
@@ -74,14 +72,12 @@ namespace Schedule
 
             if(result == true)
             {
-                warning = "alert(\"The Permit has been Updated.\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", warning, true);
+                WarningHelper.Warning_Notification("The Permit has been Updated", this);
                 return_PermitHome();
             }
             else
             {
-                warning = "alert(\"The Permit could not be updated. A permit may already exist for this Field/Date.\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", warning, true);
+                WarningHelper.Warning_Notification("The Permit could not be updated. A permit may already exist for this Field/Date.", this);
                 return;
             }  
         }

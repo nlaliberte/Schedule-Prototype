@@ -55,8 +55,7 @@ namespace Schedule
 
             if (!result)
             {
-                string warning = "alert(\"Was not able to Insert/Update the Contact. Is it possible a contact by this name already exists?\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", warning, true);
+                WarningHelper.Warning_Notification("Was not able to Insert/Update the Contact. Is it possible a contact by this name already exists?", this);
                 return;
             }
             else

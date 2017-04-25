@@ -37,8 +37,7 @@ namespace Schedule
                 query = "EXEC dbo.pr_field_delete " + fieldID;
                 bool result = SQLHelper.Exec_SQLNonQuery(query);
 
-                string script = "alert(\"" + fieldName + " has been Removed along with all it's associated Permits and Home Field records.\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                WarningHelper.Warning_Notification(fieldName + " has been Removed along with all it's associated Permits and Home Field records.", this);
 
                 grd_field.DataBind();
 
