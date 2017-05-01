@@ -27,4 +27,3 @@ BEGIN
 
 END
 
-select * from team

@@ -138,5 +138,6 @@
     <Build Include="dbo\Stored Procedures\pr_fixed_matchup_get.sql" />
     <Build Include="dbo\Stored Procedures\pr_fixed_matchup_delete.sql" />
     <Build Include="dbo\Stored Procedures\deploy_seed_team_off_day.proc.sql" />
+    <Build Include="dbo\Stored Procedures\deploy_seed_fixed_matchup.proc.sql" />
   </ItemGroup>
 </Project>
