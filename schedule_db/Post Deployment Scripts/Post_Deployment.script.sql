@@ -6,5 +6,5 @@ EXEC dbo.deploy_seed_home_field
 EXEC dbo.deploy_seed_league
 EXEC dbo.deploy_seed_permit 
 EXEC dbo.deploy_seed_team
-EXEC dbp.deploy_seed_team_day_off
+EXEC dbp.deploy_seed_team_off_day
 EXEC dbo.deploy_seed_fixed_matchup
